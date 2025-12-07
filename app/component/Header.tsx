@@ -12,8 +12,8 @@ export default function Header() {
                                 <i className="fa-solid fa-shield-halved text-xl"></i>
                             </div>
                             <div>
-                                <h1 className="font-bold text-xl text-gray-900 leading-tight">MGL CUSTOMS</h1>
-                                <p className="text-xs text-gray-500 tracking-wider">OFFICIAL PORTAL</p>
+                                <h1 className="font-bold text-xl text-gray-900 leading-tight">ТогтохномТ</h1>
+                                <p className="text-xs text-gray-500 tracking-wider">Гаалийн зуучлал</p>
                             </div>
                         </div>
                         <nav className="hidden md:flex space-x-8">

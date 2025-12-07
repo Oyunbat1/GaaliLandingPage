@@ -20,7 +20,7 @@ export default function ContactSection() {
                                     </div>
                                     <div>
                                         <div className="text-xs text-gray-400">Утас</div>
-                                        <div className="font-bold">1800-1281</div>
+                                        <div className="font-bold">+976-9511-8788</div>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4">
@@ -29,7 +29,7 @@ export default function ContactSection() {
                                     </div>
                                     <div>
                                         <div className="text-xs text-gray-400">Имэйл</div>
-                                        <div className="font-bold">info@customs.gov.mn</div>
+                                        <div className="font-bold">togtokhnomt99@gmail.com</div>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4">
@@ -43,13 +43,7 @@ export default function ContactSection() {
                                 </div>
                             </div>
                         </div>
-                        <div className="lg:w-1/2 w-full bg-white bg-opacity-5 p-8 rounded-xl border border-white border-opacity-10 text-center">
-                            <h3 className="text-xl font-bold mb-4">Санал хүсэлт илгээх</h3>
-                            <p className="text-gray-400 text-sm mb-6">Бид ажлын 8 цагийн дотор хариу өгөх болно.</p>
-                            <button className="bg-[#ad1d55] hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-md w-full transition duration-300">
-                                Холбоо барих
-                            </button>
-                        </div>
+
                     </div>
                 </div>
             </section>
