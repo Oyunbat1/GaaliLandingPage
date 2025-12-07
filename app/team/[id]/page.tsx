@@ -202,7 +202,7 @@ function SocialLink({
         );
     }
 
-    // Regular clickable link for other socials
+    //
     return (
         <a
             href={href}
