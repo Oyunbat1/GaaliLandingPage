@@ -7,6 +7,7 @@ import ServiceSection from "./component/ServiceSection";
 import ContactSection from "./component/ContactSection";
 import { useEffect } from "react";
 import TeamSection from "./component/TeamSection";
+import InformationSection from "./component/InformationSection";
 export default function Home() {
 
   useEffect(() => {
@@ -24,6 +25,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <TeamSection />
+      <InformationSection />
       <ServiceSection />
       <ContactSection />
     </div>
