@@ -3,6 +3,7 @@
 import React from "react";
 import { useParams, useRouter } from "next/navigation";
 import { motion, easeOut } from "framer-motion";
+import Link from "next/link";
 import Image from "next/image";
 import {
     ChevronLeft,
@@ -37,7 +38,9 @@ export default function TeamMemberPage() {
     const { id } = useParams();
     const router = useRouter();
     const memberIdStr = Array.isArray(id) ? id[0] : id;
-
+    const handleHome = () => {
+        router.push("/");
+    }
     const member =
         memberIdStr !== undefined ? getMemberById(memberIdStr) : undefined;
 
@@ -62,7 +65,7 @@ export default function TeamMemberPage() {
             {/* Top Navigation Bar */}
             <div className="fixed top-0 left-0 w-full p-6 z-50 bg-gradient-to-br from-[#5e0a28]/90 to-transparent backdrop-blur-sm">
                 <button
-                    onClick={() => router.back()}
+                    onClick={() => handleHome()}
                     className="group flex items-center gap-2 text-rose-200 hover:text-white transition-colors text-sm md:text-base"
                 >
                     <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />

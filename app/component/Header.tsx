@@ -1,10 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const navItems = [
+        { name: "Нүүр", href: "#" },
+        { name: "Үйлчилгээ", href: "#services" },
+        { name: "Мэдээ мэдээлэл", href: "#information" },
+        { name: "Бидний тухай", href: "#about" },
+        { name: "Холбоо барих", href: "#contact" },
+    ];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -16,25 +25,50 @@ export default function Header() {
         };
 
         window.addEventListener("scroll", handleScroll);
-
-        // Cleanup the event listener on unmount
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const toggleMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
+    // --- NEW: Custom Scroll Handler ---
+    const handleMobileNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault(); // Stop the default jump
+        setIsMobileMenuOpen(false); // Close the menu
+
+        // Wait a tiny bit for the menu closing animation to start, then scroll
+        setTimeout(() => {
+            if (href === "#") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            } else {
+                const targetId = href.replace("#", "");
+                const elem = document.getElementById(targetId);
+
+                if (elem) {
+                    // Calculate position with offset for the fixed header (80px)
+                    const headerOffset = 80;
+                    const elementPosition = elem.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            }
+        }, 100);
+    };
 
     return (
         <div>
             <motion.header
-                // Animation Configuration
-                initial={{ y: -100, opacity: 0 }} // Start above the screen and invisible
-                animate={{ y: 0, opacity: 1 }}    // Slide down to position and fade in
-                transition={{ duration: 0.6, ease: "easeOut" }} // Smooth transition
-
-                // Dynamic ClassNames based on scroll state
-                className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled
-                    ? "bg-white/80 backdrop-blur-md shadow-md" // Style when scrolled > 200px (Blur + Translucent)
-                    : "bg-white shadow-sm" // Default Style
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className={`fixed w-full top-0 z-40 transition-all duration-300 overflow-visible ${isScrolled || isMobileMenuOpen
+                    ? "bg-white/95 backdrop-blur-md shadow-md"
+                    : "bg-white shadow-sm"
                     }`}
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,42 +88,19 @@ export default function Header() {
                             </div>
                         </div>
 
-                        {/* Desktop Navigation */}
                         <nav className="hidden md:flex space-x-8">
-                            <a
-                                href="#"
-                                className="text-gray-600 hover:text-[#ad1d55] font-medium transition"
-                            >
-                                Нүүр
-                            </a>
-                            <a
-                                href="#services"
-                                className="text-gray-600 hover:text-[#ad1d55] font-medium transition"
-                            >
-                                Үйлчилгээ
-                            </a>
-                            <a
-                                href="#information"
-                                className="text-gray-600 hover:text-[#ad1d55] font-medium transition"
-                            >
-                                Мэдээ мэдээлэл
-                            </a>
-                            <a
-                                href="#about"
-                                className="text-gray-600 hover:text-[#ad1d55] font-medium transition"
-                            >
-                                Бидний тухай
-                            </a>
-                            <a
-                                href="#contact"
-                                className="text-gray-600 hover:text-[#ad1d55] font-medium transition"
-                            >
-                                Холбоо барих
-                            </a>
-
+                            {navItems.map((item) => (
+                                <a
+                                    key={item.name}
+                                    href={item.href}
+                                    className="text-gray-600 hover:text-[#ad1d55] font-medium transition"
+                                >
+                                    {item.name}
+                                </a>
+                            ))}
                         </nav>
 
-                        {/* Action Button */}
+                        {/* Action Button (Desktop) */}
                         <div className="hidden md:flex">
                             <a
                                 href="#"
@@ -99,14 +110,72 @@ export default function Header() {
                             </a>
                         </div>
 
-                        {/* Mobile Menu Button */}
+                        {/* Animated Mobile Menu Button */}
                         <div className="md:hidden flex items-center">
-                            <button className="text-gray-500 hover:text-gray-700 focus:outline-none">
-                                <i className="fa-solid fa-bars text-2xl"></i>
+                            <button
+                                onClick={toggleMenu}
+                                className="group flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none"
+                                aria-label="Toggle menu"
+                            >
+                                <motion.span
+                                    animate={isMobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    className={`block h-0.5 w-6 rounded-full transition-colors duration-300 ${isMobileMenuOpen ? "bg-[#ad1d55]" : "bg-gray-600 group-hover:bg-[#ad1d55]"}`}
+                                />
+                                <motion.span
+                                    animate={isMobileMenuOpen ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    className={`block h-0.5 w-6 rounded-full transition-colors duration-300 ${isMobileMenuOpen ? "bg-[#ad1d55]" : "bg-gray-600 group-hover:bg-[#ad1d55]"}`}
+                                />
+                                <motion.span
+                                    animate={isMobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    className={`block h-0.5 w-6 rounded-full transition-colors duration-300 ${isMobileMenuOpen ? "bg-[#ad1d55]" : "bg-gray-600 group-hover:bg-[#ad1d55]"}`}
+                                />
                             </button>
                         </div>
                     </div>
                 </div>
+
+                <AnimatePresence>
+                    {isMobileMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="md:hidden overflow-hidden bg-white border-t border-gray-100 z-50 relative"
+                        >
+                            <div className="px-4 pt-2 pb-6 space-y-2 shadow-inner">
+                                {navItems.map((item) => (
+                                    <a
+                                        key={item.name}
+                                        href={item.href}
+
+                                        // UPDATED: Using the custom handler here
+                                        onClick={(e) => handleMobileNav(e, item.href)}
+                                        className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-[#ad1d55] hover:bg-gray-50 transition"
+                                    >
+                                        {item.name}
+                                    </a>
+                                ))}
+
+                                <div className="pt-4 mt-2 border-t border-gray-100">
+                                    <a
+                                        href="#"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setIsMobileMenuOpen(false);
+                                        }}
+                                        className="block w-full text-center bg-[#ad1d55] text-white px-5 py-3 rounded-md font-semibold hover:bg-[#8a1744] transition duration-300"
+                                    >
+                                        Мэдээлэл авах
+                                    </a>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </motion.header>
         </div>
     );
