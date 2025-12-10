@@ -8,6 +8,7 @@ import ContactSection from "./component/ContactSection";
 import { useEffect } from "react";
 import TeamSection from "./component/TeamSection";
 import InformationSection from "./component/InformationSection";
+import AboutTeam from "./component/AboutTeam";
 export default function Home() {
 
   useEffect(() => {
@@ -24,6 +25,7 @@ export default function Home() {
     <div className="font-sans text-gray-800 antialiased bg-white">
       <HeroSection />
       <AboutSection />
+      <AboutTeam />
       <TeamSection />
       <InformationSection />
       <ServiceSection />

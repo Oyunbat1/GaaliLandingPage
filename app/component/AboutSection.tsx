@@ -1,45 +1,99 @@
 "use client"
 
 import { easeInOut, motion } from "framer-motion";
+// Import icons. Make sure to run: npm install lucide-react
+import { Briefcase, ShieldCheck, Clock, Users, Scale, Cpu, Target, Eye } from 'lucide-react';
+
+// Data for Values section - Easier to manage and map over
+const valuesList = [
+    {
+        id: 1,
+        title: "Мэргэжлийн чадвар",
+        description: "Гаалийн хууль, олон улсын стандарт, худалдааны журамд мэргэшсэн, тасралтгүй хөгждөг баг.",
+        icon: Briefcase,
+    },
+    {
+        id: 2,
+        title: "Хариуцлага ба ил тод байдал",
+        description: "Бүх мэдээлэл, баримт бичгийг үнэн зөв, хариуцлагатайгаар боловсруулах.",
+        icon: ShieldCheck,
+    },
+    {
+        id: 3,
+        title: "Шуурхай байдал",
+        description: "Цагийн үнэ цэнийг эрхэмлэн, гаалийн үйлчилгээг хамгийн богино хугацаанд, саадгүй гүйцэтгэх.",
+        icon: Clock,
+    },
+    {
+        id: 4,
+        title: "Харилцагч төвтэй хандлага",
+        description: "Харилцагчийн нууцлалыг чандлан сахидаг, тэдгээрийн хэрэгцээг ойлгон, зөв шийдэл санал болгодог түнш байх.",
+        icon: Users,
+    },
+    {
+        id: 5,
+        title: "Ёс зүй ба хуульд нийцэл",
+        description: "Бүх ажиллагаагаа үндэсний болон олон улсын хууль журамд нийцүүлэн, өндөр ёс зүйтэйгээр гүйцэтгэх.",
+        icon: Scale,
+    },
+    {
+        id: 6,
+        title: "Инноваци ба дижитал",
+        description: "Үйл ажиллагаагаа боловсронгуй болгох дижитал шийдэл, автоматжуулалт, шинэ технологийг тасралтгүй нэвтрүүлэх.",
+        icon: Cpu,
+    },
+];
+
 
 export default function AboutSection() {
-    // Animation Variants
-    // 1. Controls the container to trigger children one by one
+    // --- Animation Variants ---
+
+    // 1. Controls the main container to trigger children one by one
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.2, // 0.2s delay between each item appearing
+                staggerChildren: 0.15, // Slightly faster stagger for better flow
                 delayChildren: 0.1,
             },
         },
     };
 
-    // 2. The actual animation for each item (Fade up + Slide)
+    // 2. The actual entrance animation for items (Fade up + Slide)
     const itemVariants = {
         hidden: { opacity: 0, y: 30 },
         visible: {
             opacity: 1,
             y: 0,
             transition: {
-                duration: 0.8,
-                ease: easeInOut, // Custom bezier for a "premium" feel
+                duration: 0.6,
+                ease: easeInOut,
             },
         },
     };
 
+    // 3. New variant specifically for card hover interaction
+    const cardHoverVariants = {
+        hover: {
+            y: -8, // Move up
+            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)", // Deeper shadow
+            transition: { duration: 0.2, ease: easeInOut }
+        }
+    };
+
+
     return (
         <div>
-            <section id="about" className="py-20 bg-white">
+            <section id="about" className="py-20 bg-gray-50"> {/* Changed bg to slight gray for contrast with white cards */}
                 <motion.div
-                    className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+                    className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" // Increased max-width slightly for grid
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }} // Animates when 100px into view
+                    viewport={{ once: true, margin: "-50px" }}
                 >
-                    {/* Header Group */}
+                    {/* --- Header Group --- */}
                     <div className="text-center mb-12">
                         <motion.h2
                             variants={itemVariants}
@@ -53,27 +107,105 @@ export default function AboutSection() {
                         ></motion.div>
                     </div>
 
-                    {/* Content Group */}
-                    <div className="space-y-6 text-lg text-gray-600 leading-relaxed text-justify">
-                        <motion.p variants={itemVariants}>
-                            <span className="font-bold text-[#ad1d55]">Монгол Улсын Гаалийн байгууллага</span> нь дэлхийн жишигт нийцсэн цахим шилжилтийг хийж, төрийн үйлчилгээг иргэдэд ойртуулж байна. Бид орчин үеийн технологийн дэвшлийг ашиглан гаалийн хяналт шалгалтыг үр дүнтэй болгохын зэрэгцээ худалдааг хөнгөвчлөх бодлогыг баримталж байна.
-                        </motion.p>
 
-                        <motion.p variants={itemVariants}>
-                            Энэхүү цахим систем нь гадаад худалдаа эрхлэгч иргэд, аж ахуйн нэгж, тээвэр зуучийн байгууллагуудад зориулагдсан болно. Та гаалийн мэдүүлэг бөглөх, төлбөр тооцоо хийх, зөвшөөрөл авах зэрэг үйлчилгээг гэрээсээ эсвэл оффисоосоо авах боломжтой.
-                        </motion.p>
+                    {/* --- Mission & Vision Section (Top part) --- */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                        <motion.div variants={itemVariants} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <div className="flex items-center mb-4">
+                                <div className="p-2 bg-[#ad1d55]/10 rounded-lg mr-3">
+                                    <Target className="w-6 h-6 text-[#ad1d55]" />
+                                </div>
+                                <h1 className="text-xl font-bold text-gray-900">Эрхэм зорилго:</h1>
+                            </div>
+                            <p className="text-gray-600 leading-relaxed">
+                                Олон улсын худалдааны урсгалыг саадгүй, үр ашигтайгаар дамжуулах мэргэжлийн зуучлалын үйлчилгээ үзүүлэх.
+                            </p>
+                        </motion.div>
 
-                        {/* Highlight Box with specialized hover animation */}
-                        <motion.div
-                            variants={itemVariants}
-                            whileHover={{ scale: 1.02, x: 5 }} // Subtle pop and slide right on hover
-                            className="bg-[#fff0f5] p-6 rounded-lg border-l-4 border-[#ad1d55] cursor-default transition-shadow hover:shadow-lg"
-                        >
-                            <p className="text-[#2d0510] font-medium italic">
-                                "Бичиг цаасны ажлыг багасгаж, хүний оролцоог бууруулан, үйлчилгээний шат дамжлагыг хялбарчилснаар таны цаг хугацааг хэмнэж, ил тод байдлыг хангана."
+                        <motion.div variants={itemVariants} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <div className="flex items-center mb-4">
+                                <div className="p-2 bg-[#ad1d55]/10 rounded-lg mr-3">
+                                    <Eye className="w-6 h-6 text-[#ad1d55]" />
+                                </div>
+                                <h1 className="text-xl font-bold text-gray-900">Алсын хараа:</h1>
+                            </div>
+                            <p className="text-gray-600 leading-relaxed">
+                                Монголын болон бүс нутгын хамгийн найдвартай, инновацид тулгуурласан гаалийн зуучлагч компани болж, харилцагчдын анхны сонголт болох.
                             </p>
                         </motion.div>
                     </div>
+
+
+                    {/* --- New Interactive Values Section (Grid of Cards) --- */}
+                    <motion.div variants={itemVariants} className="mb-16">
+                        <h1 className="text-2xl font-bold text-gray-900 mb-8 text-center">Үнэт зүйлс:</h1>
+
+                        {/* The Grid Container */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {valuesList.map((item) => (
+                                <motion.div
+                                    key={item.id}
+                                    variants={cardHoverVariants} // Defines the hover animation and entrance
+                                    whileHover="hover" // Triggers the hover variant
+                                    className="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex flex-col items-start h-full cursor-default transition-all"
+                                >
+                                    {/* Icon Container */}
+                                    <div className="mb-4 p-3 bg-[#ad1d55]/10 rounded-lg inline-block">
+                                        <item.icon className="w-6 h-6 text-[#ad1d55]" />
+                                    </div>
+                                    {/* Title */}
+                                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                                        {item.title}
+                                    </h3>
+                                    {/* Description */}
+                                    <p className="text-gray-600 text-sm leading-relaxed flex grow">
+                                        {item.description}
+                                    </p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+
+
+                    {/* --- Bottom Text and Quote --- */}
+                    <div className="space-y-6 text-lg text-gray-600 leading-relaxed text-justify mt-8">
+                        <motion.p variants={itemVariants}>
+                            Манай компани нь 2013 онд Гаалийн зуучлагчийн тусгай зөвшөөрөл авч
+                            байгуулагдсан цагаасаа эхлэн Монгол Улсын нийт боомтуудын Гаалийн
+                            байгууллагын харьяанд албан ёсны бүртгэлтэйгээр үйл ажиллагаагаа тогтвортой
+                            явуулж ирсэн туршлагатай байгууллага юм.
+                        </motion.p>
+
+                        <motion.p variants={itemVariants}>
+                            Гадаад худалдаанд оролцогч аж ахуйн нэгж, байгууллага, иргэдийн бараа
+                            бүтээгдэхүүнийг гаалийн бүрдүүлэлт, бичиг баримтын боловсруулалт, холбогдох
+                            байгууллагуудтай ххийх харилцааг мэргэжлийн түвшинд хууль эрх зүйн
+                            шаардлагад нийцүүлэн шуурхай зохион байгуулах нь бидний үндсэн зорилт.
+                        </motion.p>
+
+                        <motion.p variants={itemVariants}>
+                            Бид олон жилийн туршлага, чадварлаг мэргэжилтнүүдийн бүрэлдэхүнн,
+                            хариуцлагатай үйчилгээний бодлогоороо дамжуулан харилцагч бүрийн ачаа
+                            тээврийн урсгалыг саадгүй, найдвартай, дамжуулахыг эрхэмлэн ажилладаг.
+                        </motion.p>
+
+                        <motion.p variants={itemVariants}>
+                            Гаалийн зуучлалын салбар дахь шинэчлэл, дижитал шийдлийг байнга нэвтрүүлж,
+                            харилцагч төвтэй, ил тод, шударга, хариуцлагатай, найдвартай үйлчилгээ үзүүлэх
+                            нь манай компанийн үйл ажиллагааны үндсэн зарчим юм.
+                        </motion.p>
+                    </div>
+
+                    {/* Highlight Box */}
+                    <motion.div
+                        variants={itemVariants}
+                        whileHover={{ scale: 1.01, x: 5 }}
+                        className="bg-white p-6 mt-8 rounded-lg border-l-4 border-[#ad1d55] shadow-sm cursor-default transition-all hover:shadow-md"
+                    >
+                        <p className="text-[#ad1d55] font-medium italic text-center sm:text-left">
+                            "Бичиг цаасны ажлыг багасгаж, хүний оролцоог бууруулан, үйлчилгээний шат дамжлагыг хялбарчилснаар таны цаг хугацааг хэмнэж, ил тод байдлыг хангана."
+                        </p>
+                    </motion.div>
                 </motion.div>
             </section>
         </div>

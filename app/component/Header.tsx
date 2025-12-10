@@ -2,16 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import Image from "next/image";
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navItems = [
         { name: "Нүүр", href: "#" },
-        { name: "Үйлчилгээ", href: "#services" },
-        { name: "Мэдээ мэдээлэл", href: "#information" },
         { name: "Бидний тухай", href: "#about" },
+        { name: "Баг хамт олон", href: "#team" },
+        { name: "Үйлчилгээ", href: "#services" },
+        { name: "Салбар нэгж", href: "#salbar" },
         { name: "Холбоо барих", href: "#contact" },
     ];
 
@@ -75,9 +76,7 @@ export default function Header() {
                     <div className="flex justify-between h-20 items-center">
                         {/* Logo Section */}
                         <div className="shrink-0 flex items-center gap-3">
-                            <div className="w-10 h-10 bg-[#ad1d55] rounded-full flex items-center justify-center text-white">
-                                <i className="fa-solid fa-shield-halved text-xl"></i>
-                            </div>
+                            <Image src={"/logo.png"} alt="logo" width={100} height={100} className="w-10 h-10  rounded-full flex items-center justify-center text-white"></Image>
                             <div>
                                 <h1 className="font-bold text-xl text-gray-900 leading-tight">
                                     ТогтохномТ
