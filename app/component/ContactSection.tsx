@@ -84,7 +84,7 @@ export default function ContactSection() {
                                     </div>
                                     <div>
                                         <div className="text-xs text-gray-300 uppercase tracking-wider mb-1">Утас</div>
-                                        <div className="font-bold text-lg tracking-wide">+976-9511-8788</div>
+                                        <div className="font-bold text-lg tracking-wide">976-95118788 ,976-88868595</div>
                                     </div>
                                 </motion.div>
 
@@ -100,7 +100,7 @@ export default function ContactSection() {
                                     </div>
                                     <div>
                                         <div className="text-xs text-gray-300 uppercase tracking-wider mb-1">Имэйл</div>
-                                        <div className="font-bold text-lg">togtokhnomt99@gmail.com</div>
+                                        <div className="font-bold text-lg">togtokhnomt99@gmail.com, info@customsbroker.mn</div>
                                     </div>
                                 </motion.div>
 

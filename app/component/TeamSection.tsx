@@ -21,7 +21,7 @@ export default function TeamSection() {
 
     return (
         <section
-            id="team"
+            id="salbar"
             className="relative w-full min-h-screen bg-[#ad1d55] bg-gradient-to-br from-[#ad1d55] to-[#5e0a28] text-white py-20 px-6 overflow-hidden"
         >
             {/* Background Pattern */}
