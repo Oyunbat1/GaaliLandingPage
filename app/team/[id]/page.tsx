@@ -89,31 +89,8 @@ export default function TeamMemberPage() {
                 </button>
             </div>
 
-            <main className="max-w-7xl mx-auto px-6 pt-32 pb-20 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-
-                    {/* Left Column: Image (Sticky on Desktop) */}
-                    <div className="lg:col-span-5 lg:sticky lg:top-32">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            transition={{ duration: 0.6, ease: easeOut }}
-                            className="relative"
-                        >
-                            {/* Glow behind image */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-[#AA00FF] to-[#D889FF] blur-2xl opacity-40 transform scale-105" />
-
-                            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[2rem] bg-white/5 border border-white/20 shadow-2xl">
-                                <Image
-                                    src={member.src}
-                                    alt={member.name}
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                />
-                            </div>
-                        </motion.div>
-                    </div>
+            <main className="max-w-7xl  px-6 pt-32 pb-20 relative z-10">
+                <div className=" gap-12 lg:gap-20 items-start">
 
                     {/* Right Column: Content */}
                     <motion.div
@@ -142,7 +119,7 @@ export default function TeamMemberPage() {
                         <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
                         {/* About / Bio */}
-                        <motion.div variants={itemVariants} className="flex flex-col gap-4">
+                        {/* <motion.div variants={itemVariants} className="flex flex-col gap-4">
                             <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-white/50">
                                 Тухай
                             </h2>
@@ -151,7 +128,7 @@ export default function TeamMemberPage() {
                                     {member.about}
                                 </p>
                             </div>
-                        </motion.div>
+                        </motion.div> */}
 
                         {/* Socials */}
                         {member.socials && member.socials.length > 0 && (

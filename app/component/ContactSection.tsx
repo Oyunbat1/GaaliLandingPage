@@ -54,7 +54,7 @@ export default function ContactSection() {
     return (
         <div>
             {/* Background: Bright Gradient matching Hero Section */}
-            <section id="contact" className="py-20 bg-[#2A00FF] bg-gradient-to-br from-[#2A00FF] to-[#AA00FF] text-white overflow-hidden relative">
+            <section id="contact" className="py-20 bg-[#2A00FF] bg-gradient-to-br from-[#2A00FF] to-[#ad1d55] text-white overflow-hidden relative">
 
                 {/* Pattern Overlay */}
                 <div
@@ -73,12 +73,12 @@ export default function ContactSection() {
 
                         {/* Left Column - Contact Info */}
                         <div className="lg:w-1/2 w-full">
-                            <motion.span
+                            {/* <motion.span
                                 variants={textVariants}
                                 className="inline-block py-1 px-3 rounded-full bg-white border border-white/20 text-[#2A00FF] font-semibold tracking-wider text-xs mb-4"
                             >
                                 SUPPORT
-                            </motion.span>
+                            </motion.span> */}
                             <motion.h2
                                 variants={textVariants}
                                 className="text-3xl lg:text-4xl font-bold mb-6"
@@ -151,16 +151,16 @@ export default function ContactSection() {
                                 className="relative w-full max-w-sm aspect-square"
                             >
                                 {/* Decorative Floating Elements */}
-                                <motion.div
+                                {/* <motion.div
                                     variants={blobVariants}
                                     animate="animate"
-                                    className="absolute -top-10 -right-10 w-40 h-40 bg-[#D889FF] rounded-full mix-blend-overlay filter blur-3xl opacity-60"
+                                    className="absolute -top-10 -right-10 w-40 h-40 bg-[#ad1d55]  rounded-full mix-blend-overlay filter blur-3xl opacity-60"
                                 />
                                 <motion.div
                                     variants={blobVariants}
                                     animate="animate"
-                                    className="absolute -bottom-10 -left-10 w-40 h-40 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-40 delay-1000"
-                                />
+                                    className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#ad1d55] rounded-full mix-blend-overlay filter blur-3xl opacity-40 delay-1000"
+                                /> */}
 
                                 {/* Glass Container */}
 

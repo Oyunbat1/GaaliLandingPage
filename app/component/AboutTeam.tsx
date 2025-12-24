@@ -62,7 +62,10 @@ export default function AboutTeam() {
                         >
                             Манай багийн соёл
                         </motion.h2>
-
+                        <motion.div
+                            variants={itemVariants}
+                            className="w-74 h-1 bg-[#AA00FF] mx-auto rounded -mt-4 mb-5"
+                        ></motion.div>
                         <motion.p
                             variants={itemVariants}
                             className="text-lg text-gray-600 leading-relaxed"
@@ -71,10 +74,7 @@ export default function AboutTeam() {
                             зөвөлгөөнд сууриласан бус <span className="text-[#AA00FF] font-semibold">харилцан итгэлцэл, хүндлэлийн</span> үндсэн дээр бүтээгддэг.
                         </motion.p>
 
-                        <motion.div
-                            variants={itemVariants}
-                            className="w-24 h-1 bg-[#AA00FF] mx-auto rounded mt-6"
-                        ></motion.div>
+
                     </div>
 
                     {/* Cards Grid */}
@@ -93,19 +93,21 @@ export default function AboutTeam() {
                                     <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-[#ad1d55]/5 rounded-full blur-2xl"></div>
 
                                     {/* Icon */}
-                                    <div className="mb-6 p-4 bg-white rounded-full shadow-sm w-fit border border-gray-100">
-                                        <IconComponent className="w-8 h-8 text-[#AA00FF]" />
+                                    <div className="flex gap-4 justify-center items-center">
+                                        <div className="mb-6 p-4 bg-white rounded-full shadow-sm w-fit border border-gray-100">
+                                            <IconComponent className="w-8 h-8 text-[#AA00FF]" />
+                                        </div>
+
+                                        <h3 className="text-[18px] font-bold text-gray-900 mb-6 relative z-10">
+                                            {item.title}
+                                        </h3>
+
                                     </div>
-
-                                    <h3 className="text-xl font-bold text-gray-900 mb-6 relative z-10">
-                                        {item.title}
-                                    </h3>
-
                                     <ul className="space-y-4 flex flex-col grow relative z-10">
                                         {item.description.map((desc) => (
                                             <li key={desc.id} className="flex items-start group">
                                                 <CheckCircle2 className="w-5 h-5 text-[#AA00FF] mt-1 mr-3 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
-                                                <span className="text-gray-600 text-sm leading-relaxed">
+                                                <span className="text-gray-600 text-sm leading-4">
                                                     {desc.text}
                                                 </span>
                                             </li>

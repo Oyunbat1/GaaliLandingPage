@@ -103,7 +103,7 @@ export default function AboutSection() {
                         </motion.h2>
                         <motion.div
                             variants={itemVariants}
-                            className="w-20 h-1 bg-[#D889FF] mx-auto rounded"
+                            className="w-70 h-1 bg-[#D889FF] mx-auto rounded"
                         ></motion.div>
                     </div>
 
@@ -147,16 +147,18 @@ export default function AboutSection() {
                                     key={item.id}
                                     variants={cardHoverVariants} // Defines the hover animation and entrance
                                     whileHover="hover" // Triggers the hover variant
-                                    className="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex flex-col items-start h-full cursor-default transition-all"
+                                    className="bg-white p-4 rounded-xl shadow-md border border-gray-100 flex flex-col items-start h-full cursor-default transition-all"
                                 >
                                     {/* Icon Container */}
-                                    <div className="mb-4 p-3 bg-[#e9caf9] rounded-lg inline-block">
-                                        <item.icon className="w-6 h-6 text-[#AA00FF]" />
+                                    <div className="flex gap-3 justify-center items-center">
+                                        <div className="mb-4 p-3 bg-[#e9caf9] rounded-lg inline-block">
+                                            <item.icon className="w-6 h-6 text-[#AA00FF]" />
+                                        </div>
+                                        {/* Title */}
+                                        <h3 className="text-md font-bold text-gray-900 mb-2">
+                                            {item.title}
+                                        </h3>
                                     </div>
-                                    {/* Title */}
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">
-                                        {item.title}
-                                    </h3>
                                     {/* Description */}
                                     <p className="text-gray-600 text-sm leading-relaxed flex grow">
                                         {item.description}
@@ -168,7 +170,7 @@ export default function AboutSection() {
 
 
                     {/* --- Bottom Text and Quote --- */}
-                    <div className="space-y-6 text-lg text-gray-600 leading-relaxed text-justify mt-8">
+                    <div className="space-y-6 text-md text-gray-600 leading-5 text-justify mt-8">
                         <motion.p variants={itemVariants}>
                             Манай компани нь 2013 онд Гаалийн зуучлагчийн тусгай зөвшөөрөл авч
                             байгуулагдсан цагаасаа эхлэн Монгол Улсын нийт боомтуудын Гаалийн

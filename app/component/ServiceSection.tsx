@@ -10,7 +10,18 @@ import {
     FileBadge,
     Headset
 } from "lucide-react";
-
+import { motion, easeInOut } from "framer-motion";
+const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.6,
+            ease: easeInOut,
+        },
+    },
+};
 export default function ServiceSection() {
     return (
         <div>
@@ -23,6 +34,10 @@ export default function ServiceSection() {
                         <h2 className="text-3xl font-bold text-gray-900 mb-4">
                             Үйлчилгээ
                         </h2>
+                        <motion.div
+                            variants={itemVariants}
+                            className="w-40 mb-6 h-1 bg-[#D889FF] mx-auto rounded"
+                        ></motion.div>
                         <p className="text-gray-600 max-w-2xl mx-auto">
                             Манай компаний Гаалийн бүртгэгдсэн мэргэжилтэнгүүд гаалийн
                             бүрдүүлэлт, импорт-экспортын үйл ажиллагаа, татварын зөвөлгөө
@@ -74,12 +89,14 @@ export default function ServiceSection() {
 
                         {/* Feature 1: Import Advice */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 group cursor-pointer">
-                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
-                                <FileInput className="w-7 h-7" strokeWidth={2} />
+                            <div className="flex gap-8">
+                                <div className="w-24 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
+                                    <FileInput className="w-7 h-7" strokeWidth={2} />
+                                </div>
+                                <h3 className="text-[18px] font-bold text-gray-900 mb-3">
+                                    Импортын барааны бүрдүүлэлтийн зөвлөмж
+                                </h3>
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">
-                                Импортын барааны бүрдүүлэлтийн зөвлөмж
-                            </h3>
                             <p className="text-gray-600 text-sm">
                                 Бараа импортлох үе шат, шаардлагатай бичиг баримтын
                                 бүрдүүлэлтийн дэлгэрэнгүй заавар.
@@ -88,12 +105,14 @@ export default function ServiceSection() {
 
                         {/* Feature 2: Export Advice */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 group cursor-pointer">
-                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
-                                <FileOutput className="w-7 h-7" strokeWidth={2} />
+                            <div className="flex gap-8">
+                                <div className="w-24 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
+                                    <FileOutput className="w-7 h-7" strokeWidth={2} />
+                                </div>
+                                <h3 className="text-[18px] font-bold text-gray-900 mb-3">
+                                    Экспортын барааны бүрдүүлэлтийн зөвлөмж
+                                </h3>
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">
-                                Экспортын барааны бүрдүүлэлтийн зөвлөмж
-                            </h3>
                             <p className="text-gray-600 text-sm">
                                 Экспортын барааны ангилал, хориглолт болон хязгаарлалт, тусгай
                                 зөвшөөрлийн мэдээлэл.
@@ -102,12 +121,14 @@ export default function ServiceSection() {
 
                         {/* Feature 3: Declaration/Calculation */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 group cursor-pointer">
-                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
-                                <Calculator className="w-7 h-7" strokeWidth={2} />
+                            <div className="flex gap-8 items-center">
+                                <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
+                                    <Calculator className="w-7 h-7" strokeWidth={2} />
+                                </div>
+                                <h3 className="text-[18px] font-bold text-gray-900 mb-3">
+                                    Гаалийн мэдүүлэг
+                                </h3>
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">
-                                Гаалийн мэдүүлэг
-                            </h3>
                             <p className="text-gray-600 text-sm">
                                 Гаалийн болон нэмэгдсэн өртгийн албан татварын урьдчилсан
                                 тооцооллыг хялбар хийх.
@@ -116,13 +137,15 @@ export default function ServiceSection() {
 
                         {/* Feature 4: Taxes and Fees (Tracking) */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 group cursor-pointer">
-                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
-                                {/* ScanSearch represents tracking the status of the declaration/payment */}
-                                <ScanSearch className="w-7 h-7" strokeWidth={2} />
+                            <div className="flex gap-8">
+                                <div className="w-16 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
+                                    {/* ScanSearch represents tracking the status of the declaration/payment */}
+                                    <ScanSearch className="w-7 h-7" strokeWidth={2} />
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                                    Гаалийн татвар, хураамж
+                                </h3>
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">
-                                Гаалийн татвар, хураамж
-                            </h3>
                             <p className="text-gray-600 text-sm">
                                 Таны илгээсэн гаалийн мэдүүлэг болон зөвшөөрлийн хүсэлтийн явцыг
                                 цахимаар хянах.
@@ -131,13 +154,15 @@ export default function ServiceSection() {
 
                         {/* Feature 5: Registration Process */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 group cursor-pointer">
-                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
-                                {/* FileBadge represents official registration/licensing */}
-                                <FileBadge className="w-7 h-7" strokeWidth={2} />
+                            <div className="flex gap-8">
+                                <div className="w-24 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
+                                    {/* FileBadge represents official registration/licensing */}
+                                    <FileBadge className="w-7 h-7" strokeWidth={2} />
+                                </div>
+                                <h3 className="text-[18px] font-bold text-gray-900 mb-3">
+                                    Гаалийн бүрдүүлэлт хийгдэх ажиллагаа
+                                </h3>
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">
-                                Гаалийн бүрдүүлэлт хийгдэх ажиллагаа
-                            </h3>
                             <p className="text-gray-600 text-sm">
                                 Гадаад худалдааны үйл ажиллагаа эрхлэхээр бүртгүүлэх, код авах
                                 бүрэн цахимжсан үйлчилгээ.
@@ -146,12 +171,14 @@ export default function ServiceSection() {
 
                         {/* Feature 6: Advice/Support */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 group cursor-pointer">
-                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
-                                <Headset className="w-7 h-7" strokeWidth={2} />
+                            <div className="flex gap-8">
+                                <div className="w-24 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
+                                    <Headset className="w-7 h-7" strokeWidth={2} />
+                                </div>
+                                <h3 className="text-[18px] font-bold text-gray-900 mb-3">
+                                    ААН, байгууллага, иргэдэд өгөх зөвөлгөө
+                                </h3>
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">
-                                ААН, байгууллага, иргэдэд өгөх зөвөлгөө
-                            </h3>
                             <p className="text-gray-600 text-sm">
                                 Лавлагаа мэдээллийн төвтэй холбогдох, хууль эрх зүйн мэдээллийг
                                 цаг алдалгүй авах.

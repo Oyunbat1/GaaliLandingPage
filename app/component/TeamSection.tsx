@@ -1,45 +1,63 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, Users, CornerDownRight, ArrowUpRight } from "lucide-react";
+import {
+    ChevronRight,
+    Users,
+    CornerDownRight,
+    ArrowUpRight,
+    Instagram,
+    Facebook,
+    Linkedin,
+    Twitter,
+    Phone,
+    Mail,
+    MessageCircle,
+    MessageSquare,
+    User
+} from "lucide-react";
+
 import { zonesData, getMembersByZoneId, Member } from "@/lib/Members";
 
+// --- ANIMATION VARIANTS ---
+const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.3 }
+    },
+};
+
+// --- ICON MAP ---
+const SocialIconMap: Record<string, any> = {
+    instagram: Instagram,
+    facebook: Facebook,
+    linkedin: Linkedin,
+    twitter: Twitter,
+    phone: Phone,
+    email: Mail,
+    viber: MessageCircle,
+    wechat: MessageSquare,
+};
+
+// --- MAIN COMPONENT ---
 export default function TeamSection() {
-    // 1. State for the currently active Zone ID
     const [activeZoneId, setActiveZoneId] = useState<number>(zonesData[0]?.id || 1);
-
-    // 2. Filter logic: Show max 7 zones
     const visibleZones = zonesData.slice(0, 7);
-
-    // 3. Get members
     const activeMembers = getMembersByZoneId(activeZoneId);
 
     return (
         <section
             id="salbar"
-            className="relative w-full min-h-screen text-white py-20 px-6 overflow-hidden"
-            // Applied the requested Gradient
-            style={{
-                background: `linear-gradient(135deg, #AA00FF 0%, #B840FF 50%, #D889FF 100%)`
-            }}
+            className="relative w-full min-h-screen text-white py-20 px-6 overflow-hidden bg-gradient-to-br from-[#2A00FF] to-[#6125da]"
         >
-            {/* Ambient Background Elements */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#D889FF] rounded-full blur-[120px] opacity-20" />
-                <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#AA00FF] rounded-full blur-[120px] opacity-40" />
-            </div>
-
-            <div className="max-w-7xl mx-auto relative z-10 h-full flex flex-col">
-                {/* Header */}
-                <div className="mb-16">
-                    <span className="inline-flex items-center py-1.5 px-4 rounded-full bg-white/10 border border-white/20 text-[#D889FF] text-xs font-bold tracking-wider mb-6 backdrop-blur-md shadow-lg">
-                        OUR TEAMS
-                    </span>
-                    <h2 className="text-3xl md:text-6xl font-bold text-white max-w-3xl leading-tight tracking-tight">
-                        Манай салбар, <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D889FF]">нэгжийн бүтэц</span>, бүрэлдэхүүн
+            <div className="max-w-6xl mx-auto relative z-10 h-full flex flex-col">
+                {/* Section Header */}
+                <div className="mb-10 flex gap-5 items-center">
+                    <h2 className="text-3xl md:text-5xl font-bold text-white max-w-3xl leading-tight tracking-tight ml-3">
+                        Манай баг хамт олон
                     </h2>
                 </div>
 
@@ -63,13 +81,13 @@ export default function TeamSection() {
                                                     : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/30 text-white"
                                                 }`}
                                         >
-                                            <span className={`text-lg transition-colors duration-300 ${isParentActive ? "font-bold text-[#AA00FF]" : "font-medium text-white/90"}`}>
+                                            <span className={`text-lg transition-colors duration-300 ${isParentActive ? "font-bold text-[#2A00FF]" : "font-medium text-white/90"}`}>
                                                 {zone.zone}
                                             </span>
 
                                             {/* Icon Indicator */}
                                             {isParentActive ? (
-                                                <div className="bg-[#AA00FF] rounded-full p-1">
+                                                <div className="bg-[#2A00FF] rounded-full p-1">
                                                     <ChevronRight className="w-4 h-4 text-white" />
                                                 </div>
                                             ) : (
@@ -94,7 +112,7 @@ export default function TeamSection() {
                                                                 onClick={() => setActiveZoneId(subZone.id)}
                                                                 className={`group flex items-center gap-3 text-left py-3 px-4 rounded-xl text-sm transition-all duration-200
                                                                 ${isSubActive
-                                                                        ? "bg-[#D889FF] text-[#4a0072] font-bold shadow-md"
+                                                                        ? "bg-[#6125da] text-white font-bold shadow-md"
                                                                         : "text-white/70 hover:text-white hover:bg-white/10"
                                                                     }`}
                                                             >
@@ -129,12 +147,12 @@ export default function TeamSection() {
                                             <h3 className="text-2xl font-bold text-white mb-1">
                                                 Багийн гишүүд
                                             </h3>
-                                            <p className="text-[#D889FF] text-sm font-medium">
+                                            <p className="text-blue-200 text-sm font-medium">
                                                 Active Team Members
                                             </p>
                                         </div>
                                         <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
-                                            <Users size={16} className="text-[#D889FF]" />
+                                            <Users size={16} className="text-[#a58aff]" />
                                             <span className="text-white font-mono text-sm">{activeMembers.length}</span>
                                         </div>
                                     </div>
@@ -161,44 +179,123 @@ export default function TeamSection() {
     );
 }
 
-// Sub-component for individual member cards
+// --- SUB-COMPONENTS ---
+
 function MemberCard({ member }: { member: Member }) {
     return (
-        <Link href={`/team/${member.id}`} className="block h-full">
-            <motion.div
-                whileHover={{ y: -5 }}
-                className="group relative h-full bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-2xl p-5 hover:border-[#D889FF]/50 hover:bg-white/15 transition-all duration-300 shadow-lg hover:shadow-[#AA00FF]/20"
-            >
-                <div className="flex items-center gap-5">
-                    {/* Avatar with Glow Ring */}
-                    <div className="relative w-16 h-16 flex-shrink-0">
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#AA00FF] to-[#D889FF] blur opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
-                        <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/20 group-hover:border-white transition-colors">
-                            <Image
-                                src={member.src}
-                                alt={member.name}
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                    </div>
+        <motion.div
+            layout
+            initial="hidden"
+            animate="visible"
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            className="group relative flex flex-col h-full w-[300px] bg-white backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-[#2A00FF]/20 transition-all duration-300"
+        >
+            {/* Top Decoration Line */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#2A00FF] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                    {/* Info */}
-                    <div className="flex flex-col min-w-0 flex-1">
-                        <h4 className="text-lg font-bold text-white truncate group-hover:text-[#D889FF] transition-colors">
+            <div className="p-6 flex flex-col h-full">
+
+                <div className="flex items-start gap-4 mb-6">
+                    <div className="flex-1 min-w-0">
+                        <h4 className="text-xl font-bold text-[#2A00FF] truncate leading-tight transition-colors duration-300">
                             {member.name}
                         </h4>
-                        <p className="text-sm text-white/60 truncate font-light mb-2">
+                        <p className="text-sm text-[#2A00FF] font-medium truncate mt-1">
                             {member.job}
                         </p>
-
-                        <div className="flex items-center text-xs font-semibold text-white/80 group-hover:text-white transition-colors">
-                            Дэлгэрэнгүй
-                            <ArrowUpRight size={14} className="ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#D889FF]" />
-                        </div>
                     </div>
                 </div>
-            </motion.div>
-        </Link>
+
+                <div className="w-full h-px bg-[#2A00FF]/10 mb-6" />
+
+                <div className="flex-1 flex flex-col">
+                    {member.socials && member.socials.length > 0 ? (
+                        <>
+                            <h5 className="text-xs font-bold uppercase tracking-widest text-[#2A00FF]/60 mb-4">
+                                Холбогдох
+                            </h5>
+                            <div className="grid grid-cols-1 gap-3">
+                                {member.socials.map((social) => {
+                                    const iconKey = social.name.toLowerCase();
+                                    const Icon = SocialIconMap[iconKey] || Linkedin;
+                                    const isStatic = iconKey === "phone" || iconKey === "email";
+
+                                    return (
+                                        <SocialLink
+                                            key={social.id}
+                                            href={social.url}
+                                            icon={<Icon size={16} />}
+                                            label={social.name}
+                                            isStatic={isStatic}
+                                        />
+                                    );
+                                })}
+                            </div>
+                        </>
+                    ) : (
+                        <div className="flex-1 flex items-center justify-center text-[#2A00FF]/40 text-sm italic">
+                            Холбогдох мэдээлэл байхгүй
+                        </div>
+                    )}
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
+function SocialLink({
+    href,
+    icon,
+    label,
+    isStatic,
+}: {
+    href: string;
+    icon: React.ReactNode;
+    label: string;
+    isStatic?: boolean;
+}) {
+    // UPDATED: Fixed base classes to specifically use border-[#2A00FF] and rounded-md
+    const baseClasses = "flex items-center justify-between w-full px-4 py-2.5 rounded-md border border-[#2A00FF] bg-transparent transition-all duration-300";
+
+    if (isStatic) {
+        const displayValue = href.replace(/^(tel:|mailto:)/, "");
+
+        return (
+            <div className={`${baseClasses} cursor-default opacity-90 hover:opacity-100`}>
+                <div className="flex items-center gap-3 overflow-hidden">
+                    <span className="text-[#2A00FF]">
+                        {icon}
+                    </span>
+                    <span className="text-sm text-[#2A00FF] font-mono leading-3 select-all">
+                        {displayValue}
+                    </span>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            // Added hover background for better interaction feedback
+            className={`${baseClasses} group/link hover:bg-[#2A00FF]/5 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#2A00FF]/10`}
+        >
+            <div className="flex items-center gap-3">
+                <span className="text-[#2A00FF] transition-colors duration-300">
+                    {icon}
+                </span>
+                <span className="text-sm font-medium text-[#2A00FF] transition-colors duration-300 capitalize">
+                    {label}
+                </span>
+            </div>
+
+            <ArrowUpRight
+                size={14}
+                className="text-[#2A00FF] opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300"
+            />
+        </a>
     );
 }

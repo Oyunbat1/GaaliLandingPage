@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion, easeOut, easeInOut } from "framer-motion";
+import Image from "next/image";
 
 // --- Animation Variants ---
 
@@ -30,7 +31,7 @@ const floatingBlobVariants = {
         y: [0, -20, 0],
         x: [0, custom % 2 === 0 ? 15 : -15, 0],
         scale: [1, 1.05, 1],
-        opacity: [0.3, 0.5, 0.3],
+        opacity: [0.4, 0.6, 0.4],
         transition: {
             duration: 7 + custom,
             repeat: Infinity,
@@ -55,7 +56,7 @@ export default function HeroSection() {
 
     return (
         <div>
-            <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-[#6125da] bg-linear-to-tr from-[#2A00FF] to-[#]">
+            <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-58 overflow-hidden bg-[#6125da] bg-linear-to-br from-[#2A00FF] to-[#bf3b6e]">
 
                 {/* Background Pattern Overlay */}
                 <div
@@ -67,28 +68,19 @@ export default function HeroSection() {
 
                     {/* --- Left Side: Text Content --- */}
                     <motion.div
-                        className="lg:w-1/2 text-center lg:text-left text-white"
+                        className="lg:w-1/2 text-center lg:text-left text-white z-20"
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
                     >
-                        {/* <motion.span
-                            variants={fadeUpVariants}
-                            className="inline-block py-1 px-3 rounded-full bg-white bg-opacity-30 border border-[#2A00FF] border-opacity-50 text-sm font-semibold tracking-wide mb-6 text-[#2A00FF]"
-                        >
-                            DIGITAL FIRST CUSTOMS
-                        </motion.span> */}
-
                         <motion.h2 variants={fadeUpVariants} className="text-4xl lg:text-5xl font-bold leading-tight mb-6">
-
                             <br />
-                            {/* Accent Color Text */}
                             <span className="text-white">
                                 Шуурхай, Ил тод, Найдвартай
                             </span>
                         </motion.h2>
 
-                        <motion.p variants={fadeUpVariants} className="text-lg text-white mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed opacity-90">
+                        <motion.p variants={fadeUpVariants} className="text-lg text-white/90 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
                             Экспорт, импортын гаалийн бүрдүүлэлтийг
                             цаг хугацаа, орон зайнаас үл хамааран
                             шийдвэрлэх боломж
@@ -99,7 +91,7 @@ export default function HeroSection() {
                                 href="#services"
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="bg-white text-[#AA00FF] px-8 py-3.5 rounded-md font-bold shadow-lg shadow-[#2A00FF]/50 transition duration-300"
+                                className="bg-white text-[#6125da] px-8 py-3.5 rounded-md font-bold shadow-lg shadow-[#2A00FF]/50 transition duration-300"
                             >
                                 Үйлчилгээ үзэх
                             </motion.a>
@@ -114,30 +106,46 @@ export default function HeroSection() {
                         </motion.div>
                     </motion.div>
 
-                    {/* --- Right Side: Abstract Visual & Glass Card --- */}
-                    <div className="lg:w-1/2 mt-16 lg:mt-0 flex justify-center">
-                        <div className="relative w-full max-w-md">
+                    {/* --- Right Side: Image & Visuals --- */}
+                    <div className="lg:w-1/2 mt-16 lg:mt-0 flex justify-center lg:justify-end relative z-10">
+                        {/* Wrapper for Blobs and Image */}
+                        <div className="relative w-full max-w-md lg:max-w-lg aspect-square flex items-center justify-center">
 
-                            {/* Decorative Blobs - Using Theme Colors */}
+                            {/* Floating Blobs (Behind Image) */}
                             <motion.div
                                 custom={1}
                                 variants={floatingBlobVariants}
                                 animate="animate"
-                                className="absolute top-0 -left-4 w-72 h-72 bg-[#AA00FF] rounded-full mix-blend-screen filter blur-3xl opacity-40"
-                            ></motion.div>
+                                className="absolute top-0 left-0 w-48 h-48 sm:w-72 sm:h-72 bg-[#AA00FF] rounded-full mix-blend-screen filter blur-3xl opacity-40"
+                            />
                             <motion.div
                                 custom={2}
                                 variants={floatingBlobVariants}
                                 animate="animate"
-                                className="absolute bottom-0 -right-4 w-72 h-72 bg-[#D889FF] rounded-full mix-blend-screen filter blur-3xl opacity-30 delay-75"
-                            ></motion.div>
+                                className="absolute bottom-0 right-0 w-48 h-48 sm:w-72 sm:h-72 bg-[#D889FF] rounded-full mix-blend-screen filter blur-3xl opacity-30 delay-75"
+                            />
 
-                            {/* Glassmorphism Card */}
-
+                            {/* Main Image */}
+                            <motion.div
+                                variants={cardVariants}
+                                initial="hidden"
+                                animate="visible"
+                                className="relative z-10 w-full rounded-2xl cursor-pointer"
+                            >
+                                <Image
+                                    src="/gaali3.png" // Ensure this file exists in your public folder
+                                    alt="Mongolian Customs Service"
+                                    width={600}
+                                    height={600}
+                                    className="w-full h-auto object-contain drop-shadow-2xl rounded-2xl"
+                                    priority // Loads image immediately for Hero LCP optimization
+                                />
+                            </motion.div>
                         </div>
                     </div>
+
                 </div>
-            </section >
-        </div >
+            </section>
+        </div>
     );
 }
