@@ -4,46 +4,49 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, Users, CornerDownRight } from "lucide-react";
+import { ChevronRight, Users, CornerDownRight, ArrowUpRight } from "lucide-react";
 import { zonesData, getMembersByZoneId, Member } from "@/lib/Members";
 
 export default function TeamSection() {
-    // 1. State for the currently active Zone ID (Default to the first one)
+    // 1. State for the currently active Zone ID
     const [activeZoneId, setActiveZoneId] = useState<number>(zonesData[0]?.id || 1);
 
-    // 2. Filter logic: Ensure we only show a max of 7 zones on the left
+    // 2. Filter logic: Show max 7 zones
     const visibleZones = zonesData.slice(0, 7);
 
-    // 3. Get members for the active zone (using your helper function)
+    // 3. Get members
     const activeMembers = getMembersByZoneId(activeZoneId);
-
-    const heroPattern = `data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E`;
 
     return (
         <section
             id="salbar"
-            className="relative w-full min-h-screen bg-[#ad1d55] bg-gradient-to-br from-[#ad1d55] to-[#5e0a28] text-white py-20 px-6 overflow-hidden"
+            className="relative w-full min-h-screen text-white py-20 px-6 overflow-hidden"
+            // Applied the requested Gradient
+            style={{
+                background: `linear-gradient(135deg, #AA00FF 0%, #B840FF 50%, #D889FF 100%)`
+            }}
         >
-            {/* Background Pattern */}
-            <div
-                className="absolute top-0 right-0 bottom-0 left-0 pointer-events-none mix-blend-overlay opacity-50"
-                style={{ backgroundImage: `url("${heroPattern}")` }}
-            />
+            {/* Ambient Background Elements */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#D889FF] rounded-full blur-[120px] opacity-20" />
+                <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#AA00FF] rounded-full blur-[120px] opacity-40" />
+            </div>
 
             <div className="max-w-7xl mx-auto relative z-10 h-full flex flex-col">
                 {/* Header */}
                 <div className="mb-16">
-                    <span className="inline-block py-1 px-3 rounded-full bg-rose-900 bg-opacity-50 border border-rose-300 text-sm font-semibold tracking-wide mb-4">
+                    <span className="inline-flex items-center py-1.5 px-4 rounded-full bg-white/10 border border-white/20 text-[#D889FF] text-xs font-bold tracking-wider mb-6 backdrop-blur-md shadow-lg">
                         OUR TEAMS
                     </span>
-                    <h2 className="text-3xl md:text-5xl font-bold text-white max-w-2xl leading-tight">
-                        Манай салбар, нэгжийн бүтэц, бүрэлдэхүүн
+                    <h2 className="text-3xl md:text-6xl font-bold text-white max-w-3xl leading-tight tracking-tight">
+                        Манай салбар, <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D889FF]">нэгжийн бүтэц</span>, бүрэлдэхүүн
                     </h2>
                 </div>
 
-                {/* Main Split Layout */}
-                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 min-h-[600px]">
-                    {/* LEFT SIDE: Zone Navigation (Sticky list) */}
+                {/* Main Layout */}
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 min-h-[600px]">
+
+                    {/* LEFT SIDE: Zone Navigation */}
                     <div className="lg:w-1/3 flex-shrink-0">
                         <div className="lg:sticky lg:top-10 flex flex-col gap-3">
                             {visibleZones.map((zone) => {
@@ -54,45 +57,55 @@ export default function TeamSection() {
                                         {/* Main Parent Button */}
                                         <button
                                             onClick={() => setActiveZoneId(zone.id)}
-                                            className={`group relative flex items-center justify-between w-full p-5 text-left rounded-xl border transition-all duration-300 outline-none
-                                    ${isParentActive
-                                                    ? "bg-white text-[#ad1d55] border-white shadow-xl translate-x-2"
-                                                    : "bg-rose-950/20 border-rose-300/20 text-rose-100 hover:bg-rose-900/40 hover:border-rose-300/40"
+                                            className={`group relative flex items-center justify-between w-full p-4 md:p-5 text-left rounded-2xl border transition-all duration-300 outline-none
+                                            ${isParentActive
+                                                    ? "bg-white border-white shadow-xl shadow-black/10 translate-x-2"
+                                                    : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/30 text-white"
                                                 }`}
                                         >
-                                            <span
-                                                className={`font-semibold text-lg ${isParentActive ? "font-bold" : "font-medium"
-                                                    }`}
-                                            >
+                                            <span className={`text-lg transition-colors duration-300 ${isParentActive ? "font-bold text-[#AA00FF]" : "font-medium text-white/90"}`}>
                                                 {zone.zone}
                                             </span>
-                                            {isParentActive && (
-                                                <ChevronRight className="w-5 h-5 animate-pulse" />
+
+                                            {/* Icon Indicator */}
+                                            {isParentActive ? (
+                                                <div className="bg-[#AA00FF] rounded-full p-1">
+                                                    <ChevronRight className="w-4 h-4 text-white" />
+                                                </div>
+                                            ) : (
+                                                <ChevronRight className="w-5 h-5 text-white/30 group-hover:text-white group-hover:translate-x-1 transition-all" />
                                             )}
                                         </button>
 
-                                        {/* Sub-Zones Render Logic */}
-                                        {zone.zones && zone.zones.length > 0 && (
-                                            <div className="flex flex-col gap-2 ml-6 pl-4 border-l-2 border-rose-300/20">
-                                                {zone.zones.map((subZone) => {
-                                                    const isSubActive = activeZoneId === subZone.id;
-                                                    return (
-                                                        <button
-                                                            key={subZone.id}
-                                                            onClick={() => setActiveZoneId(subZone.id)}
-                                                            className={`group flex items-center gap-2 text-left py-2 px-4 rounded-lg text-sm transition-all duration-200
-                                                        ${isSubActive
-                                                                    ? "bg-rose-500 text-white font-bold shadow-md translate-x-1"
-                                                                    : "text-rose-200 hover:text-white hover:bg-rose-900/30"
-                                                                }`}
-                                                        >
-                                                            <CornerDownRight size={14} className={isSubActive ? "opacity-100" : "opacity-50"} />
-                                                            {subZone.zone}
-                                                        </button>
-                                                    );
-                                                })}
-                                            </div>
-                                        )}
+                                        {/* Sub-Zones */}
+                                        <AnimatePresence>
+                                            {zone.zones && zone.zones.length > 0 && isParentActive && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, height: 0 }}
+                                                    animate={{ opacity: 1, height: 'auto' }}
+                                                    exit={{ opacity: 0, height: 0 }}
+                                                    className="flex flex-col gap-2 ml-4 pl-4 border-l border-white/20"
+                                                >
+                                                    {zone.zones.map((subZone) => {
+                                                        const isSubActive = activeZoneId === subZone.id;
+                                                        return (
+                                                            <button
+                                                                key={subZone.id}
+                                                                onClick={() => setActiveZoneId(subZone.id)}
+                                                                className={`group flex items-center gap-3 text-left py-3 px-4 rounded-xl text-sm transition-all duration-200
+                                                                ${isSubActive
+                                                                        ? "bg-[#D889FF] text-[#4a0072] font-bold shadow-md"
+                                                                        : "text-white/70 hover:text-white hover:bg-white/10"
+                                                                    }`}
+                                                            >
+                                                                <CornerDownRight size={14} className={isSubActive ? "opacity-100" : "opacity-40"} />
+                                                                {subZone.zone}
+                                                            </button>
+                                                        );
+                                                    })}
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
                                     </div>
                                 );
                             })}
@@ -101,24 +114,29 @@ export default function TeamSection() {
 
                     {/* RIGHT SIDE: Members Grid */}
                     <div className="lg:w-2/3 flex-grow">
-                        <div className="bg-black/10 rounded-3xl p-6 md:p-8 border border-white/5 min-h-full">
+                        <div className="bg-black/20 backdrop-blur-xl rounded-[2rem] p-6 md:p-10 border border-white/10 min-h-full shadow-2xl">
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={activeZoneId}
-                                    initial={{ opacity: 0, x: 20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: -20 }}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
                                     transition={{ duration: 0.3 }}
                                     className="h-full"
                                 >
-                                    <div className="mb-6 flex items-center justify-between">
-                                        <h3 className="text-2xl font-bold text-rose-100">
-                                            Багийн гишүүд
-                                        </h3>
-                                        <span className="text-rose-300 text-sm flex items-center gap-2">
-                                            <Users size={16} />
-                                            {activeMembers.length} member(s)
-                                        </span>
+                                    <div className="mb-8 flex items-end justify-between border-b border-white/10 pb-4">
+                                        <div>
+                                            <h3 className="text-2xl font-bold text-white mb-1">
+                                                Багийн гишүүд
+                                            </h3>
+                                            <p className="text-[#D889FF] text-sm font-medium">
+                                                Active Team Members
+                                            </p>
+                                        </div>
+                                        <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
+                                            <Users size={16} className="text-[#D889FF]" />
+                                            <span className="text-white font-mono text-sm">{activeMembers.length}</span>
+                                        </div>
                                     </div>
 
                                     {activeMembers.length > 0 ? (
@@ -128,8 +146,8 @@ export default function TeamSection() {
                                             ))}
                                         </div>
                                     ) : (
-                                        <div className="flex flex-col items-center justify-center h-[300px] text-rose-300/50 border-2 border-dashed border-rose-300/20 rounded-xl">
-                                            <Users size={48} className="mb-4 opacity-50" />
+                                        <div className="flex flex-col items-center justify-center h-[300px] text-white/40 border-2 border-dashed border-white/10 rounded-2xl bg-white/5">
+                                            <Users size={48} className="mb-4 opacity-20" />
                                             <p>Энэ хэсэгт одоогоор гишүүн бүртгэгдээгүй байна.</p>
                                         </div>
                                     )}
@@ -149,29 +167,34 @@ function MemberCard({ member }: { member: Member }) {
         <Link href={`/team/${member.id}`} className="block h-full">
             <motion.div
                 whileHover={{ y: -5 }}
-                className="group relative h-full bg-white/5 border border-rose-300/20 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:shadow-2xl hover:shadow-rose-900/50 hover:border-rose-300/50"
+                className="group relative h-full bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-2xl p-5 hover:border-[#D889FF]/50 hover:bg-white/15 transition-all duration-300 shadow-lg hover:shadow-[#AA00FF]/20"
             >
-                <div className="flex items-center gap-4 p-4">
-                    {/* Avatar */}
-                    <div className="relative w-20 h-20 flex-shrink-0 rounded-full overflow-hidden border-2 border-rose-300/30 group-hover:border-rose-200 transition-colors">
-                        <Image
-                            src={member.src}
-                            alt={member.name}
-                            fill
-                            className="object-cover"
-                        />
+                <div className="flex items-center gap-5">
+                    {/* Avatar with Glow Ring */}
+                    <div className="relative w-16 h-16 flex-shrink-0">
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#AA00FF] to-[#D889FF] blur opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
+                        <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/20 group-hover:border-white transition-colors">
+                            <Image
+                                src={member.src}
+                                alt={member.name}
+                                fill
+                                className="object-cover"
+                            />
+                        </div>
                     </div>
 
                     {/* Info */}
-                    <div className="flex flex-col min-w-0">
-                        <h4 className="text-lg font-bold text-white truncate group-hover:text-rose-200 transition-colors">
+                    <div className="flex flex-col min-w-0 flex-1">
+                        <h4 className="text-lg font-bold text-white truncate group-hover:text-[#D889FF] transition-colors">
                             {member.name}
                         </h4>
-                        <p className="text-sm text-rose-200/80 truncate font-light">
+                        <p className="text-sm text-white/60 truncate font-light mb-2">
                             {member.job}
                         </p>
-                        <div className="mt-2 flex items-center text-xs text-rose-300 font-medium group-hover:translate-x-1 transition-transform">
-                            Дэлгэрэнгүй <ChevronRight size={12} className="ml-1" />
+
+                        <div className="flex items-center text-xs font-semibold text-white/80 group-hover:text-white transition-colors">
+                            Дэлгэрэнгүй
+                            <ArrowUpRight size={14} className="ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#D889FF]" />
                         </div>
                     </div>
                 </div>

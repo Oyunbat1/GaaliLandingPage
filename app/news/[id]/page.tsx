@@ -26,7 +26,7 @@ export default function NewsPage() {
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
                 <Link
                     href="/"
-                    className="inline-flex items-center text-gray-500 hover:text-[#ad1d55] transition-colors mb-6"
+                    className="inline-flex items-center text-gray-500 hover:text-[#AA00FF] transition-colors mb-6"
                 >
                     <ArrowLeft size={20} className="mr-2" />
                     Мэдээ рүү буцах
@@ -45,7 +45,7 @@ export default function NewsPage() {
                             <Clock size={16} /> 2 min read
                         </span>
                         <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
-                        <span className="text-[#ad1d55] font-semibold">Онцлох мэдээ</span>
+                        <span className="text-[#AA00FF] font-semibold">Онцлох мэдээ</span>
                     </div>
 
                     <h1 className="text-4xl font-bold text-gray-900 mb-6">

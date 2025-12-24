@@ -68,12 +68,12 @@ export default function AboutTeam() {
                             className="text-lg text-gray-600 leading-relaxed"
                         >
                             Манай компанийн харилцаа үйлчилгээ нь зөвхөн баримт бичгийн бүрдүүлэлт,
-                            зөвөлгөөнд сууриласан бус <span className="text-[#ad1d55] font-semibold">харилцан итгэлцэл, хүндлэлийн</span> үндсэн дээр бүтээгддэг.
+                            зөвөлгөөнд сууриласан бус <span className="text-[#AA00FF] font-semibold">харилцан итгэлцэл, хүндлэлийн</span> үндсэн дээр бүтээгддэг.
                         </motion.p>
 
                         <motion.div
                             variants={itemVariants}
-                            className="w-24 h-1 bg-[#ad1d55] mx-auto rounded mt-6"
+                            className="w-24 h-1 bg-[#AA00FF] mx-auto rounded mt-6"
                         ></motion.div>
                     </div>
 
@@ -94,7 +94,7 @@ export default function AboutTeam() {
 
                                     {/* Icon */}
                                     <div className="mb-6 p-4 bg-white rounded-full shadow-sm w-fit border border-gray-100">
-                                        <IconComponent className="w-8 h-8 text-[#ad1d55]" />
+                                        <IconComponent className="w-8 h-8 text-[#AA00FF]" />
                                     </div>
 
                                     <h3 className="text-xl font-bold text-gray-900 mb-6 relative z-10">
@@ -104,7 +104,7 @@ export default function AboutTeam() {
                                     <ul className="space-y-4 flex flex-col grow relative z-10">
                                         {item.description.map((desc) => (
                                             <li key={desc.id} className="flex items-start group">
-                                                <CheckCircle2 className="w-5 h-5 text-[#ad1d55] mt-1 mr-3 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
+                                                <CheckCircle2 className="w-5 h-5 text-[#AA00FF] mt-1 mr-3 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
                                                 <span className="text-gray-600 text-sm leading-relaxed">
                                                     {desc.text}
                                                 </span>

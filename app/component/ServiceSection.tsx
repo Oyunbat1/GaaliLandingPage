@@ -48,7 +48,7 @@ export default function ServiceSection() {
                                     {service.description.map((item) => (
                                         <li key={item.id} className="flex items-start">
                                             {/* Styled Bullet Point */}
-                                            <span className="flex-shrink-0 h-2 w-2 mt-2.5 mr-3 bg-[#ad1d55] rounded-full"></span>
+                                            <span className="shrink-0 h-2 w-2 mt-2.5 mr-3 bg-[#AA00FF] rounded-full"></span>
                                             <span className="text-sm md:text-base">{item.text}</span>
                                         </li>
                                     ))}
@@ -74,7 +74,7 @@ export default function ServiceSection() {
 
                         {/* Feature 1: Import Advice */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 group cursor-pointer">
-                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#ad1d55] mb-6 group-hover:bg-[#ad1d55] group-hover:text-white transition duration-300">
+                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
                                 <FileInput className="w-7 h-7" strokeWidth={2} />
                             </div>
                             <h3 className="text-xl font-bold text-gray-900 mb-3">
@@ -88,7 +88,7 @@ export default function ServiceSection() {
 
                         {/* Feature 2: Export Advice */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 group cursor-pointer">
-                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#ad1d55] mb-6 group-hover:bg-[#ad1d55] group-hover:text-white transition duration-300">
+                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
                                 <FileOutput className="w-7 h-7" strokeWidth={2} />
                             </div>
                             <h3 className="text-xl font-bold text-gray-900 mb-3">
@@ -102,7 +102,7 @@ export default function ServiceSection() {
 
                         {/* Feature 3: Declaration/Calculation */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 group cursor-pointer">
-                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#ad1d55] mb-6 group-hover:bg-[#ad1d55] group-hover:text-white transition duration-300">
+                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
                                 <Calculator className="w-7 h-7" strokeWidth={2} />
                             </div>
                             <h3 className="text-xl font-bold text-gray-900 mb-3">
@@ -116,7 +116,7 @@ export default function ServiceSection() {
 
                         {/* Feature 4: Taxes and Fees (Tracking) */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 group cursor-pointer">
-                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#ad1d55] mb-6 group-hover:bg-[#ad1d55] group-hover:text-white transition duration-300">
+                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
                                 {/* ScanSearch represents tracking the status of the declaration/payment */}
                                 <ScanSearch className="w-7 h-7" strokeWidth={2} />
                             </div>
@@ -131,7 +131,7 @@ export default function ServiceSection() {
 
                         {/* Feature 5: Registration Process */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 group cursor-pointer">
-                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#ad1d55] mb-6 group-hover:bg-[#ad1d55] group-hover:text-white transition duration-300">
+                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
                                 {/* FileBadge represents official registration/licensing */}
                                 <FileBadge className="w-7 h-7" strokeWidth={2} />
                             </div>
@@ -146,7 +146,7 @@ export default function ServiceSection() {
 
                         {/* Feature 6: Advice/Support */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 group cursor-pointer">
-                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#ad1d55] mb-6 group-hover:bg-[#ad1d55] group-hover:text-white transition duration-300">
+                            <div className="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center text-[#AA00FF] mb-6 group-hover:bg-[#AA00FF] group-hover:text-white transition duration-300">
                                 <Headset className="w-7 h-7" strokeWidth={2} />
                             </div>
                             <h3 className="text-xl font-bold text-gray-900 mb-3">

@@ -103,7 +103,7 @@ export default function AboutSection() {
                         </motion.h2>
                         <motion.div
                             variants={itemVariants}
-                            className="w-20 h-1 bg-[#ad1d55] mx-auto rounded"
+                            className="w-20 h-1 bg-[#D889FF] mx-auto rounded"
                         ></motion.div>
                     </div>
 
@@ -112,10 +112,10 @@ export default function AboutSection() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                         <motion.div variants={itemVariants} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                             <div className="flex items-center mb-4">
-                                <div className="p-2 bg-[#ad1d55]/10 rounded-lg mr-3">
-                                    <Target className="w-6 h-6 text-[#ad1d55]" />
+                                <div className="p-2 bg-[#e9caf9] rounded-lg mr-3">
+                                    <Target className="w-6 h-6 text-[#AA00FF]" />
                                 </div>
-                                <h1 className="text-xl font-bold text-gray-900">Эрхэм зорилго:</h1>
+                                <h1 className="text-xl font-bold text-[#AA00FF]">Эрхэм зорилго:</h1>
                             </div>
                             <p className="text-gray-600 leading-relaxed">
                                 Олон улсын худалдааны урсгалыг саадгүй, үр ашигтайгаар дамжуулах мэргэжлийн зуучлалын үйлчилгээ үзүүлэх.
@@ -124,10 +124,10 @@ export default function AboutSection() {
 
                         <motion.div variants={itemVariants} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                             <div className="flex items-center mb-4">
-                                <div className="p-2 bg-[#ad1d55]/10 rounded-lg mr-3">
-                                    <Eye className="w-6 h-6 text-[#ad1d55]" />
+                                <div className="p-2 bg-[#e9caf9] rounded-lg mr-3">
+                                    <Eye className="w-6 h-6 text-[#AA00FF]" />
                                 </div>
-                                <h1 className="text-xl font-bold text-gray-900">Алсын хараа:</h1>
+                                <h1 className="text-xl font-bold text-[#AA00FF]">Алсын хараа:</h1>
                             </div>
                             <p className="text-gray-600 leading-relaxed">
                                 Монголын болон бүс нутгын хамгийн найдвартай, инновацид тулгуурласан гаалийн зуучлагч компани болж, харилцагчдын анхны сонголт болох.
@@ -150,8 +150,8 @@ export default function AboutSection() {
                                     className="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex flex-col items-start h-full cursor-default transition-all"
                                 >
                                     {/* Icon Container */}
-                                    <div className="mb-4 p-3 bg-[#ad1d55]/10 rounded-lg inline-block">
-                                        <item.icon className="w-6 h-6 text-[#ad1d55]" />
+                                    <div className="mb-4 p-3 bg-[#e9caf9] rounded-lg inline-block">
+                                        <item.icon className="w-6 h-6 text-[#AA00FF]" />
                                     </div>
                                     {/* Title */}
                                     <h3 className="text-lg font-bold text-gray-900 mb-2">
@@ -200,9 +200,9 @@ export default function AboutSection() {
                     <motion.div
                         variants={itemVariants}
                         whileHover={{ scale: 1.01, x: 5 }}
-                        className="bg-white p-6 mt-8 rounded-lg border-l-4 border-[#ad1d55] shadow-sm cursor-default transition-all hover:shadow-md"
+                        className="bg-white p-6 mt-8 rounded-lg border-l-4 border-[#AA00FF] shadow-sm cursor-default transition-all hover:shadow-md"
                     >
-                        <p className="text-[#ad1d55] font-medium italic text-center sm:text-left">
+                        <p className="text-[#D889FF] font-medium italic text-center sm:text-left">
                             "Бичиг цаасны ажлыг багасгаж, хүний оролцоог бууруулан, үйлчилгээний шат дамжлагыг хялбарчилснаар таны цаг хугацааг хэмнэж, ил тод байдлыг хангана."
                         </p>
                     </motion.div>

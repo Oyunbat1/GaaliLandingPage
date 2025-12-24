@@ -40,7 +40,7 @@ export default function InformationSection() {
                     className="mb-12 text-center"
                 >
                     <h2 className="text-3xl font-bold text-gray-900 mb-4">Мэдээ, мэдээлэл</h2>
-                    <div className="w-16 h-1 bg-[#ad1d55] mx-auto rounded"></div>
+                    <div className="w-16 h-1 bg-[#AA00FF] mx-auto rounded"></div>
                 </motion.div>
 
                 {/* Grid Container */}
@@ -72,11 +72,11 @@ export default function InformationSection() {
                                 {/* Content */}
                                 <div className="p-6 flex flex-col grow">
                                     <div className="flex items-center gap-2 text-xs text-gray-500 mb-3">
-                                        <Calendar size={14} className="text-[#ad1d55]" />
+                                        <Calendar size={14} className="text-[#AA00FF]" />
                                         <span>2025-08-18</span>
                                     </div>
 
-                                    <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 leading-tight group-hover:text-[#ad1d55] transition-colors">
+                                    <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 leading-tight group-hover:text-[#AA00FF] transition-colors">
                                         {item.title}
                                     </h3>
 
@@ -84,7 +84,7 @@ export default function InformationSection() {
                                         {item.description}
                                     </p>
 
-                                    <span className="mt-auto inline-flex items-center text-[#ad1d55] font-semibold text-sm">
+                                    <span className="mt-auto inline-flex items-center text-[#AA00FF] font-semibold text-sm">
                                         Дэлгэрэнгүй унших
                                         <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
                                     </span>

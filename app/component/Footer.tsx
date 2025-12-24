@@ -3,7 +3,7 @@
 export default function Footer() {
     return (
         <div>
-            <footer className="bg-black text-white py-10 border-t border-gray-800">
+            <footer className="bg-white text-black py-10 border-t border-gray-800">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="text-sm text-gray-500">
                         &copy; 2025 Монгол Улсын Гаалийн Ерөнхий Газар.

@@ -92,7 +92,7 @@ export default function Header() {
                                 <a
                                     key={item.name}
                                     href={item.href}
-                                    className="text-gray-600 hover:text-[#ad1d55] font-medium transition"
+                                    className="text-gray-600 hover:text-[#AA00FF] font-medium transition"
                                 >
                                     {item.name}
                                 </a>
@@ -103,7 +103,7 @@ export default function Header() {
                         <div className="hidden md:flex">
                             <a
                                 href="#"
-                                className="bg-white border-2 border-[#ad1d55] text-[#ad1d55] hover:bg-[#ad1d55] hover:text-white px-5 py-2 rounded-md font-semibold transition duration-300"
+                                className="bg-white border-2 border-[#AA00FF] text-[#AA00FF] hover:bg-[#AA00FF] hover:text-white px-5 py-2 rounded-md font-semibold transition duration-300"
                             >
                                 Мэдээлэл авах
                             </a>
