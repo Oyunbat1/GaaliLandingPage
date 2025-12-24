@@ -85,7 +85,7 @@ export default function AboutSection() {
 
     return (
         <div>
-            <section id="about" className="py-20 bg-gray-50"> {/* Changed bg to slight gray for contrast with white cards */}
+            <section id="about" className="py-12 bg-gray-50"> {/* Changed bg to slight gray for contrast with white cards */}
                 <motion.div
                     className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" // Increased max-width slightly for grid
                     variants={containerVariants}
@@ -109,7 +109,7 @@ export default function AboutSection() {
 
 
                     {/* --- Mission & Vision Section (Top part) --- */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                         <motion.div variants={itemVariants} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                             <div className="flex items-center mb-4">
                                 <div className="p-2 bg-[#e9caf9] rounded-lg mr-3">
@@ -130,7 +130,7 @@ export default function AboutSection() {
                                 <h1 className="text-xl font-bold text-[#AA00FF]">Алсын хараа:</h1>
                             </div>
                             <p className="text-gray-600 leading-relaxed">
-                                Монголын болон бүс нутгын хамгийн найдвартай, инновацид тулгуурласан гаалийн зуучлагч компани болж, харилцагчдын анхны сонголт болох.
+                                Монголын болон бүс нутгийн хамгийн найдвартай, инновацад тулгуурласан гаалийн зуучлагч компани болж, харилцагчдын анхны сонголт болох.
                             </p>
                         </motion.div>
                     </div>
@@ -181,13 +181,13 @@ export default function AboutSection() {
                         <motion.p variants={itemVariants}>
                             Гадаад худалдаанд оролцогч аж ахуйн нэгж, байгууллага, иргэдийн бараа
                             бүтээгдэхүүнийг гаалийн бүрдүүлэлт, бичиг баримтын боловсруулалт, холбогдох
-                            байгууллагуудтай ххийх харилцааг мэргэжлийн түвшинд хууль эрх зүйн
+                            байгууллагуудтай хийх харилцааг мэргэжлийн түвшинд хууль эрх зүйн
                             шаардлагад нийцүүлэн шуурхай зохион байгуулах нь бидний үндсэн зорилт.
                         </motion.p>
 
                         <motion.p variants={itemVariants}>
-                            Бид олон жилийн туршлага, чадварлаг мэргэжилтнүүдийн бүрэлдэхүнн,
-                            хариуцлагатай үйчилгээний бодлогоороо дамжуулан харилцагч бүрийн ачаа
+                            Бид олон жилийн туршлага, чадварлаг мэргэжилтнүүдийн бүрэлдэхүүн,
+                            хариуцлагатай үйлчилгээний бодлогоороо дамжуулан харилцагч бүрийн ачаа
                             тээврийн урсгалыг саадгүй, найдвартай, дамжуулахыг эрхэмлэн ажилладаг.
                         </motion.p>
 

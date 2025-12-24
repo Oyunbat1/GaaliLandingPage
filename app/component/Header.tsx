@@ -73,18 +73,20 @@ export default function Header() {
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-20 items-center">
-                        {/* Logo Section */}
-                        <div className="shrink-0 flex items-center gap-3">
-                            <Image src={"/logo.png"} alt="logo" width={100} height={100} className="w-14 h-14  flex items-center justify-center text-white"></Image>
-                            <div>
-                                <h1 className="font-bold text-2xl text-gray-900 leading-tight">
-                                    ТогтохномТ
-                                </h1>
-                                <p className="text-sm text-gray-500 tracking-wider">
-                                    Гаалийн зуучлал
-                                </p>
+
+                        <a href="#">
+                            <div className="shrink-0 flex items-center gap-3">
+                                <Image src={"/logo.png"} alt="logo" width={100} height={100} className="w-14 h-14  flex items-center justify-center text-white"></Image>
+                                <div>
+                                    <h1 className="font-bold text-2xl text-gray-900 leading-tight">
+                                        ТогтохномТ
+                                    </h1>
+                                    <p className="text-sm text-gray-500 tracking-wider pl-1">
+                                        Гаалийн зуучлал
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
 
                         <nav className="hidden md:flex space-x-8">
                             {navItems.map((item) => (

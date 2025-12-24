@@ -15,7 +15,6 @@ import {
     Mail,
     MessageCircle,
     MessageSquare,
-    User
 } from "lucide-react";
 
 import { zonesData, getMembersByZoneId, Member } from "@/lib/Members";
@@ -26,7 +25,7 @@ const itemVariants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.3 }
+        transition: { duration: 0.3 },
     },
 };
 
@@ -63,6 +62,7 @@ export default function TeamSection() {
                 {/* Main Layout */}
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 min-h-[600px]">
 
+                    {/* LEFT SIDE: Zone Navigation */}
                     <div className="lg:w-1/3 flex-shrink-0">
                         <div className="lg:sticky lg:top-10 flex flex-col gap-3">
                             {visibleZones.map((zone) => {
@@ -74,12 +74,17 @@ export default function TeamSection() {
                                         <button
                                             onClick={() => setActiveZoneId(zone.id)}
                                             className={`group relative flex items-center justify-between w-full p-4 md:p-5 text-left rounded-2xl border transition-all duration-300 outline-none
-                                            ${isParentActive
+                      ${isParentActive
                                                     ? "bg-white border-white shadow-xl shadow-black/10 translate-x-2"
                                                     : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/30 text-white"
                                                 }`}
                                         >
-                                            <span className={`text-lg transition-colors duration-300 ${isParentActive ? "font-bold text-[#2A00FF]" : "font-medium text-white/90"}`}>
+                                            <span
+                                                className={`text-lg transition-colors duration-300 ${isParentActive
+                                                        ? "font-bold text-[#2A00FF]"
+                                                        : "font-medium text-white/90"
+                                                    }`}
+                                            >
                                                 {zone.zone}
                                             </span>
 
@@ -93,35 +98,33 @@ export default function TeamSection() {
                                             )}
                                         </button>
 
-                                        {/* Sub-Zones */}
-                                        <AnimatePresence>
-                                            {zone.zones && zone.zones.length > 0 && isParentActive && (
-                                                <motion.div
-                                                    initial={{ opacity: 0, height: 0 }}
-                                                    animate={{ opacity: 1, height: 'auto' }}
-                                                    exit={{ opacity: 0, height: 0 }}
-                                                    className="flex flex-col gap-2 ml-4 pl-4 border-l border-white/20"
-                                                >
-                                                    {zone.zones.map((subZone) => {
-                                                        const isSubActive = activeZoneId === subZone.id;
-                                                        return (
-                                                            <button
-                                                                key={subZone.id}
-                                                                onClick={() => setActiveZoneId(subZone.id)}
-                                                                className={`group flex items-center gap-3 text-left py-3 px-4 rounded-xl text-sm transition-all duration-200
-                                                                ${isSubActive
-                                                                        ? "bg-[#6125da] text-white font-bold shadow-md"
-                                                                        : "text-white/70 hover:text-white hover:bg-white/10"
-                                                                    }`}
-                                                            >
-                                                                <CornerDownRight size={14} className={isSubActive ? "opacity-100" : "opacity-40"} />
-                                                                {subZone.zone}
-                                                            </button>
-                                                        );
-                                                    })}
-                                                </motion.div>
-                                            )}
-                                        </AnimatePresence>
+                                        {/* Sub-Zones (ALWAYS VISIBLE NOW) */}
+                                        {zone.zones && zone.zones.length > 0 && (
+                                            <div className="flex flex-col gap-2 ml-4 pl-4 border-l border-white/20 mt-1">
+                                                {zone.zones.map((subZone) => {
+                                                    const isSubActive = activeZoneId === subZone.id;
+                                                    return (
+                                                        <button
+                                                            key={subZone.id}
+                                                            onClick={() => setActiveZoneId(subZone.id)}
+                                                            className={`group flex items-center gap-3 text-left py-3 px-4 rounded-xl text-sm transition-all duration-200
+                              ${isSubActive
+                                                                    ? "bg-[#6125da] text-white font-bold shadow-md translate-x-2"
+                                                                    : "text-white/70 hover:text-white hover:bg-white/10"
+                                                                }`}
+                                                        >
+                                                            <CornerDownRight
+                                                                size={14}
+                                                                className={
+                                                                    isSubActive ? "opacity-100" : "opacity-40"
+                                                                }
+                                                            />
+                                                            {subZone.zone}
+                                                        </button>
+                                                    );
+                                                })}
+                                            </div>
+                                        )}
                                     </div>
                                 );
                             })}
@@ -151,7 +154,9 @@ export default function TeamSection() {
                                         </div>
                                         <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
                                             <Users size={16} className="text-[#a58aff]" />
-                                            <span className="text-white font-mono text-sm">{activeMembers.length}</span>
+                                            <span className="text-white font-mono text-sm">
+                                                {activeMembers.length}
+                                            </span>
                                         </div>
                                     </div>
 
@@ -193,7 +198,6 @@ function MemberCard({ member }: { member: Member }) {
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#2A00FF] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="p-6 flex flex-col h-full">
-
                 <div className="flex items-start gap-4 mb-6">
                     <div className="flex-1 min-w-0">
                         <h4 className="text-xl font-bold text-[#2A00FF] truncate leading-tight transition-colors duration-300">
@@ -253,18 +257,18 @@ function SocialLink({
     label: string;
     isStatic?: boolean;
 }) {
-    // UPDATED: Fixed base classes to specifically use border-[#2A00FF] and rounded-md
-    const baseClasses = "flex items-center justify-between w-full px-4 py-2.5 rounded-md border border-[#2A00FF] bg-transparent transition-all duration-300";
+    const baseClasses =
+        "flex items-center justify-between w-full px-4 py-2.5 rounded-md border border-[#2A00FF] bg-transparent transition-all duration-300";
 
     if (isStatic) {
         const displayValue = href.replace(/^(tel:|mailto:)/, "");
 
         return (
-            <div className={`${baseClasses} cursor-default opacity-90 hover:opacity-100`}>
+            <div
+                className={`${baseClasses} cursor-default opacity-90 hover:opacity-100`}
+            >
                 <div className="flex items-center gap-3 overflow-hidden">
-                    <span className="text-[#2A00FF]">
-                        {icon}
-                    </span>
+                    <span className="text-[#2A00FF]">{icon}</span>
                     <span className="text-sm text-[#2A00FF] font-mono leading-3 select-all">
                         {displayValue}
                     </span>
@@ -278,7 +282,6 @@ function SocialLink({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            // Added hover background for better interaction feedback
             className={`${baseClasses} group/link hover:bg-[#2A00FF]/5 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#2A00FF]/10`}
         >
             <div className="flex items-center gap-3">

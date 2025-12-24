@@ -39,7 +39,7 @@ export default function ServiceSection() {
                             className="w-40 mb-6 h-1 bg-[#D889FF] mx-auto rounded"
                         ></motion.div>
                         <p className="text-gray-600 max-w-2xl mx-auto">
-                            Манай компаний Гаалийн бүртгэгдсэн мэргэжилтэнгүүд гаалийн
+                            Манай компани Гаалийн бүртгэгдсэн мэргэжилтнүүд гаалийн
                             бүрдүүлэлт, импорт-экспортын үйл ажиллагаа, зэрэгт өндөр мэргэшсэн туршлагатай. Бид харилцагчдынхаа бараа,
                             тээвэрлэлт, гаалийн үйл явцыг хуульд нийцсэн, түргэн шуурхай
                             шийдэж, аливаа эрсдэлээс хамгаалах үйлчилгээг үзүүлдэг.
@@ -74,7 +74,7 @@ export default function ServiceSection() {
 
                 {/* --- PART 2: Static Features (6 Icons) --- */}
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-10">
                         <h2 className="text-3xl font-bold text-gray-900 mb-4">
                             Үйлчилгээний боломжууд
                         </h2>

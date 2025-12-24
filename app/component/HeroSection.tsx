@@ -130,14 +130,14 @@ export default function HeroSection() {
                                 variants={cardVariants}
                                 initial="hidden"
                                 animate="visible"
-                                className="relative z-10 w-full rounded-2xl cursor-pointer"
+                                className="relative z-10 w-full rounded-2xl cursor-pointer "
                             >
                                 <Image
-                                    src="/gaali5.png" // Ensure this file exists in your public folder
+                                    src="/gaali6.png" // Ensure this file exists in your public folder
                                     alt="Mongolian Customs Service"
                                     width={600}
                                     height={600}
-                                    className="w-full h-auto object-contain drop-shadow-2xl rounded-2xl"
+                                    className="w-full h-auto object-contain drop-shadow-2xl rounded-2xl "
                                     priority // Loads image immediately for Hero LCP optimization
                                 />
                             </motion.div>

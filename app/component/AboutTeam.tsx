@@ -46,7 +46,7 @@ export default function AboutTeam() {
 
     return (
         <div id="team">
-            <section className="py-20 bg-white">
+            <section className="py-10 bg-white">
                 <motion.div
                     className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
                     variants={containerVariants}
@@ -71,7 +71,7 @@ export default function AboutTeam() {
                             className="text-lg text-gray-600 leading-relaxed"
                         >
                             Манай компанийн харилцаа үйлчилгээ нь зөвхөн баримт бичгийн бүрдүүлэлт,
-                            зөвөлгөөнд сууриласан бус <span className="text-[#AA00FF] font-semibold">харилцан итгэлцэл, хүндлэлийн</span> үндсэн дээр бүтээгддэг.
+                            зөвлөгөөнд суурилсан бус <span className="text-[#AA00FF] font-semibold">харилцан итгэлцэл, хүндлэлийн</span> үндсэн дээр бүтээгддэг.
                         </motion.p>
 
 
