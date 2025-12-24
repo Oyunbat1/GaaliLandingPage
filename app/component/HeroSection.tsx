@@ -68,7 +68,7 @@ export default function HeroSection() {
 
                     {/* --- Left Side: Text Content --- */}
                     <motion.div
-                        className="lg:w-1/2 text-center lg:text-left text-white z-20"
+                        className="lg:w-1/2 text-center lg:text-left text-white z-20 "
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
@@ -133,11 +133,11 @@ export default function HeroSection() {
                                 className="relative z-10 w-full rounded-2xl cursor-pointer "
                             >
                                 <Image
-                                    src="/gaali6.png" // Ensure this file exists in your public folder
+                                    src="/gaali7.png" // Ensure this file exists in your public folder
                                     alt="Mongolian Customs Service"
                                     width={600}
                                     height={600}
-                                    className="w-full h-auto object-contain drop-shadow-2xl rounded-2xl "
+                                    className="w-full h-auto object-contain drop-shadow-2xl rounded-2xl blur-[2px]"
                                     priority // Loads image immediately for Hero LCP optimization
                                 />
                             </motion.div>
