@@ -127,7 +127,7 @@ export default function ContactSection() {
                                 </motion.div>
 
                                 {/* Contact Item 3: Address */}
-                                <motion.div
+                                {/* <motion.div
                                     variants={itemVariants}
                                     whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
                                     className="flex items-center gap-4 p-4 rounded-xl bg-white/10 border border-white backdrop-blur-md transition-all cursor-default shadow-lg shadow-[#2A00FF]/20"
@@ -140,7 +140,7 @@ export default function ContactSection() {
                                         <div className="font-bold leading-snug text-white">Улаанбаатар хот, Сүхбаатар дүүрэг</div>
                                         <div className="text-sm text-white/80">Их тойруу 81/1</div>
                                     </div>
-                                </motion.div>
+                                </motion.div> */}
                             </div>
                         </div>
 

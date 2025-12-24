@@ -12,7 +12,7 @@ export default function Header() {
         { name: "Бидний тухай", href: "#about" },
         { name: "Баг хамт олон", href: "#team" },
         { name: "Үйлчилгээ", href: "#services" },
-        { name: "Салбар нэгж", href: "#salbar" },
+        { name: "Салбар нэгжүүд", href: "#salbar" },
     ];
 
     useEffect(() => {
@@ -75,7 +75,7 @@ export default function Header() {
                     <div className="flex justify-between h-20 items-center">
                         {/* Logo Section */}
                         <div className="shrink-0 flex items-center gap-3">
-                            <Image src={"/logo.png"} alt="logo" width={100} height={100} className="w-14 h-14  rounded-full flex items-center justify-center text-white"></Image>
+                            <Image src={"/logo.png"} alt="logo" width={100} height={100} className="w-14 h-14  flex items-center justify-center text-white"></Image>
                             <div>
                                 <h1 className="font-bold text-2xl text-gray-900 leading-tight">
                                     ТогтохномТ
@@ -118,17 +118,17 @@ export default function Header() {
                                 <motion.span
                                     animate={isMobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
                                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                                    className={`block h-0.5 w-6 rounded-full transition-colors duration-300 ${isMobileMenuOpen ? "bg-[#ad1d55]" : "bg-gray-600 group-hover:bg-[#ad1d55]"}`}
+                                    className={`block h-0.5 w-6 rounded-full transition-colors duration-300 ${isMobileMenuOpen ? "bg-[#ad1d55]" : "bg-[#ad1d55] group-hover:bg-[#ad1d55]"}`}
                                 />
                                 <motion.span
                                     animate={isMobileMenuOpen ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
                                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                                    className={`block h-0.5 w-6 rounded-full transition-colors duration-300 ${isMobileMenuOpen ? "bg-[#ad1d55]" : "bg-gray-600 group-hover:bg-[#ad1d55]"}`}
+                                    className={`block h-0.5 w-6 rounded-full transition-colors duration-300 ${isMobileMenuOpen ? "bg-[#ad1d55]" : "bg-[#ad1d55] group-hover:bg-[#ad1d55]"}`}
                                 />
                                 <motion.span
                                     animate={isMobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
                                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                                    className={`block h-0.5 w-6 rounded-full transition-colors duration-300 ${isMobileMenuOpen ? "bg-[#ad1d55]" : "bg-gray-600 group-hover:bg-[#ad1d55]"}`}
+                                    className={`block h-0.5 w-6 rounded-full transition-colors duration-300 ${isMobileMenuOpen ? "bg-[#ad1d55]" : "bg-[#ad1d55] group-hover:bg-[#ad1d55]"}`}
                                 />
                             </button>
                         </div>
@@ -165,9 +165,9 @@ export default function Header() {
                                             e.preventDefault();
                                             setIsMobileMenuOpen(false);
                                         }}
-                                        className="block w-full text-center bg-[#ad1d55] text-white px-5 py-3 rounded-md font-semibold hover:bg-[#8a1744] transition duration-300"
+                                        className="block w-full text-center bg-[#ad1d55] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#8a1744] transition duration-300"
                                     >
-                                        Мэдээлэл авах
+                                        {/* Мэдээлэл авах */}
                                     </a>
                                 </div>
                             </div>
