@@ -81,8 +81,8 @@ export default function TeamSection() {
                                         >
                                             <span
                                                 className={`text-lg transition-colors duration-300 ${isParentActive
-                                                        ? "font-bold text-[#2A00FF]"
-                                                        : "font-medium text-white/90"
+                                                    ? "font-bold text-[#2A00FF]"
+                                                    : "font-medium text-white/90"
                                                     }`}
                                             >
                                                 {zone.zone}
@@ -130,6 +130,7 @@ export default function TeamSection() {
                     </div>
 
                     {/* RIGHT SIDE: Members Grid */}
+                    {/* RIGHT SIDE: Members Grid */}
                     <div className="lg:w-2/3 flex-grow">
                         <div className="bg-black/20 backdrop-blur-xl rounded-[2rem] p-6 md:p-10 border border-white/10 min-h-full shadow-2xl">
                             <AnimatePresence mode="wait">
@@ -139,7 +140,7 @@ export default function TeamSection() {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -10 }}
                                     transition={{ duration: 0.3 }}
-                                    className="h-full"
+                                    className="h-full flex flex-col" // Added flex flex-col to handle height
                                 >
                                     <div className="mb-8 flex items-end justify-between border-b border-white/10 pb-4">
                                         <div>
@@ -159,7 +160,18 @@ export default function TeamSection() {
                                     </div>
 
                                     {activeMembers.length > 0 ? (
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                        /* UPDATED CONTAINER:
+                                           1. max-h-[60vh]: Limits height on mobile to 60% of viewport
+                                           2. md:max-h-none: Removes limit on desktop
+                                           3. overflow-y-auto: Enables internal scrolling on mobile
+                                           4. Custom Scrollbar styling for a cleaner look
+                                        */
+                                        <div className="
+              grid grid-cols-1 sm:grid-cols-2 gap-6
+              max-h-[60vh] overflow-y-auto md:max-h-none md:overflow-visible
+              pr-2 pb-4
+              scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent
+          ">
                                             {activeMembers.map((member) => (
                                                 <MemberCard key={member.id} member={member} />
                                             ))}
@@ -190,18 +202,18 @@ function MemberCard({ member }: { member: Member }) {
             animate="visible"
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="group relative flex flex-col h-full w-[300px] bg-white backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-[#2A00FF]/20 transition-all duration-300"
+            className="group relative flex flex-col h-full w-[310px] bg-white backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-[#2A00FF]/20 transition-all duration-300"
         >
             {/* Top Decoration Line */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#2A00FF] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <div className="p-6 flex flex-col h-full">
+            <div className="p-5 flex flex-col h-full">
                 <div className="flex items-start gap-4 mb-6">
                     <div className="flex-1 min-w-0">
                         <h4 className="text-xl font-bold text-[#2A00FF] truncate leading-tight transition-colors duration-300">
                             {member.name}
                         </h4>
-                        <p className="text-sm text-[#2A00FF] font-medium truncate mt-1">
+                        <p className="text-[12px] text-[#2A00FF] font-medium truncate mt-1">
                             {member.job}
                         </p>
                     </div>
@@ -258,9 +270,8 @@ function SocialLink({
     isStatic?: boolean;
 }) {
     const baseClasses =
-        "flex items-center justify-between w-full px-4 py-2.5 rounded-md border border-[#2A00FF] bg-transparent transition-all duration-300";
+        "flex items-center justify-between w-full px-2 py-3 rounded-md border border-[#2A00FF]  transition-all duration-300";
 
-    // Handle Static items (WeChat, Phone, Email) -> Copy to Clipboard
     if (isStatic) {
         const displayValue = href.replace(/^(tel:|mailto:)/, "");
 
@@ -281,13 +292,12 @@ function SocialLink({
                         {displayValue}
                     </span>
                 </div>
-                {/* Copy Icon to indicate action */}
+
                 <Copy size={14} className="text-[#2A00FF] opacity-60" />
             </div>
         );
     }
 
-    // Handle Link items (Viber, Facebook, etc.) -> Direct Link
     return (
         <a
             href={href}
