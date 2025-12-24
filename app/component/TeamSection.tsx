@@ -54,7 +54,6 @@ export default function TeamSection() {
             className="relative w-full min-h-screen text-white py-20 px-6 overflow-hidden bg-[#6125da] bg-linear-to-br from-[#2A00FF] to-[#bf3b6e]"
         >
             <div className="max-w-6xl mx-auto relative z-10 h-full flex flex-col">
-                {/* Section Header */}
                 <div className="mb-10 flex gap-5 items-center">
                     <h2 className="text-3xl md:text-5xl font-bold text-white max-w-3xl leading-tight tracking-tight ml-3">
                         Салбар нэгжүүд
@@ -64,7 +63,6 @@ export default function TeamSection() {
                 {/* Main Layout */}
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 min-h-[600px]">
 
-                    {/* LEFT SIDE: Zone Navigation */}
                     <div className="lg:w-1/3 flex-shrink-0">
                         <div className="lg:sticky lg:top-10 flex flex-col gap-3">
                             {visibleZones.map((zone) => {
