@@ -13,8 +13,9 @@ import {
     Twitter,
     Phone,
     Mail,
-    MessageCircle,
-    MessageSquare,
+    MessageCircle, // Using for Viber
+    MessageSquare, // Using for WeChat
+    Copy,
 } from "lucide-react";
 
 import { zonesData, getMembersByZoneId, Member } from "@/lib/Members";
@@ -61,7 +62,6 @@ export default function TeamSection() {
 
                 {/* Main Layout */}
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 min-h-[600px]">
-
                     {/* LEFT SIDE: Zone Navigation */}
                     <div className="lg:w-1/3 flex-shrink-0">
                         <div className="lg:sticky lg:top-10 flex flex-col gap-3">
@@ -115,9 +115,7 @@ export default function TeamSection() {
                                                         >
                                                             <CornerDownRight
                                                                 size={14}
-                                                                className={
-                                                                    isSubActive ? "opacity-100" : "opacity-40"
-                                                                }
+                                                                className={isSubActive ? "opacity-100" : "opacity-40"}
                                                             />
                                                             {subZone.zone}
                                                         </button>
@@ -221,7 +219,9 @@ function MemberCard({ member }: { member: Member }) {
                                 {member.socials.map((social) => {
                                     const iconKey = social.name.toLowerCase();
                                     const Icon = SocialIconMap[iconKey] || Linkedin;
-                                    const isStatic = iconKey === "phone" || iconKey === "email";
+                                    // WECHAT and Phone/Email are treated as static text (Copy action)
+                                    // Viber is treated as a link (Direct action)
+                                    const isStatic = iconKey === "phone" || iconKey === "email" || iconKey === "wechat";
 
                                     return (
                                         <SocialLink
@@ -260,23 +260,34 @@ function SocialLink({
     const baseClasses =
         "flex items-center justify-between w-full px-4 py-2.5 rounded-md border border-[#2A00FF] bg-transparent transition-all duration-300";
 
+    // Handle Static items (WeChat, Phone, Email) -> Copy to Clipboard
     if (isStatic) {
         const displayValue = href.replace(/^(tel:|mailto:)/, "");
 
+        const handleCopy = () => {
+            navigator.clipboard.writeText(displayValue);
+            alert(`${label} copied to clipboard: ${displayValue}`);
+        };
+
         return (
             <div
-                className={`${baseClasses} cursor-default opacity-90 hover:opacity-100`}
+                onClick={handleCopy}
+                className={`${baseClasses} cursor-pointer opacity-90 hover:opacity-100 hover:bg-[#2A00FF]/5 active:scale-95`}
+                title="Click to Copy"
             >
                 <div className="flex items-center gap-3 overflow-hidden">
                     <span className="text-[#2A00FF]">{icon}</span>
-                    <span className="text-sm text-[#2A00FF] font-mono leading-3 select-all">
+                    <span className="text-sm text-[#2A00FF] font-mono leading-3 select-all truncate">
                         {displayValue}
                     </span>
                 </div>
+                {/* Copy Icon to indicate action */}
+                <Copy size={14} className="text-[#2A00FF] opacity-60" />
             </div>
         );
     }
 
+    // Handle Link items (Viber, Facebook, etc.) -> Direct Link
     return (
         <a
             href={href}

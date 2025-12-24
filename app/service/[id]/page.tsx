@@ -122,17 +122,18 @@ export default function ServiceDetailPage() {
 
                                 {/* Header Section */}
                                 <div className="flex flex-col gap-4 border-b border-gray-100 pb-6">
-                                    <div className="w-14 h-14 bg-rose-100 rounded-xl flex items-center justify-center text-[#AA00FF] mb-2">
-                                        <selectedItem.icon className="w-7 h-7" strokeWidth={2} />
-                                    </div>
-                                    <motion.h1
-                                        className="text-3xl font-bold text-gray-900"
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        transition={{ delay: 0.1 }}
-                                    >
-                                        {selectedItem.title}
-                                    </motion.h1>
+                                    <div className="flex gap-6 items-center">
+                                        <div className="w-14 h-14 bg-rose-100 rounded-xl flex items-center justify-center text-[#AA00FF] mb-2">
+                                            <selectedItem.icon className="w-7 h-7" strokeWidth={2} />
+                                        </div>
+                                        <motion.h1
+                                            className="text-2xl font-bold text-gray-900 pb-3"
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ delay: 0.1 }}
+                                        >
+                                            {selectedItem.title}
+                                        </motion.h1></div>
                                     <motion.p
                                         className="text-gray-600 leading-relaxed text-lg"
                                         initial={{ opacity: 0 }}
