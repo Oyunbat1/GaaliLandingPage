@@ -26,11 +26,11 @@ export default function ServiceSection() {
     return (
         <div>
             {/* 4. KEY FEATURES */}
-            <section id="services" className="py-20 bg-gray-50">
+            <section id="services" className="py-6 bg-gray-50">
 
                 {/* --- PART 1: Dynamic Data (Service Support) --- */}
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-                    <div className="text-center mb-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+                    <div className="text-center mb-4">
                         <h2 className="text-3xl font-bold text-gray-900 mb-4">
                             Үйлчилгээ
                         </h2>

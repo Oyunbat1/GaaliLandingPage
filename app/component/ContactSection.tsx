@@ -144,28 +144,8 @@ export default function ContactSection() {
                             </div>
                         </div>
 
-                        {/* Right Column - Visual (Bright Glass Style) */}
-                        <div className="lg:w-1/2 w-full flex justify-center lg:justify-end mt-12 lg:mt-0">
-                            <motion.div
-                                variants={textVariants}
-                                className="relative w-full max-w-sm aspect-square"
-                            >
-                                {/* Decorative Floating Elements */}
-                                {/* <motion.div
-                                    variants={blobVariants}
-                                    animate="animate"
-                                    className="absolute -top-10 -right-10 w-40 h-40 bg-[#ad1d55]  rounded-full mix-blend-overlay filter blur-3xl opacity-60"
-                                />
-                                <motion.div
-                                    variants={blobVariants}
-                                    animate="animate"
-                                    className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#ad1d55] rounded-full mix-blend-overlay filter blur-3xl opacity-40 delay-1000"
-                                /> */}
 
-                                {/* Glass Container */}
 
-                            </motion.div>
-                        </div>
                     </div>
                 </motion.div>
             </section>
