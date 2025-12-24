@@ -133,7 +133,7 @@ export default function HeroSection() {
                                 className="relative z-10 w-full rounded-2xl cursor-pointer"
                             >
                                 <Image
-                                    src="/gaali3.png" // Ensure this file exists in your public folder
+                                    src="/gaali5.png" // Ensure this file exists in your public folder
                                     alt="Mongolian Customs Service"
                                     width={600}
                                     height={600}

@@ -13,7 +13,6 @@ export default function Header() {
         { name: "Баг хамт олон", href: "#team" },
         { name: "Үйлчилгээ", href: "#services" },
         { name: "Салбар нэгж", href: "#salbar" },
-        { name: "Холбоо барих", href: "#contact" },
     ];
 
     useEffect(() => {
@@ -76,12 +75,12 @@ export default function Header() {
                     <div className="flex justify-between h-20 items-center">
                         {/* Logo Section */}
                         <div className="shrink-0 flex items-center gap-3">
-                            <Image src={"/logo.png"} alt="logo" width={100} height={100} className="w-10 h-10  rounded-full flex items-center justify-center text-white"></Image>
+                            <Image src={"/logo.png"} alt="logo" width={100} height={100} className="w-14 h-14  rounded-full flex items-center justify-center text-white"></Image>
                             <div>
-                                <h1 className="font-bold text-xl text-gray-900 leading-tight">
+                                <h1 className="font-bold text-2xl text-gray-900 leading-tight">
                                     ТогтохномТ
                                 </h1>
-                                <p className="text-xs text-gray-500 tracking-wider">
+                                <p className="text-sm text-gray-500 tracking-wider">
                                     Гаалийн зуучлал
                                 </p>
                             </div>
@@ -102,10 +101,10 @@ export default function Header() {
                         {/* Action Button (Desktop) */}
                         <div className="hidden md:flex">
                             <a
-                                href="#"
+                                href="#contact"
                                 className="bg-white border-2 border-[#AA00FF] text-[#AA00FF] hover:bg-[#AA00FF] hover:text-white px-5 py-2 rounded-md font-semibold transition duration-300"
                             >
-                                Мэдээлэл авах
+                                Холбоо барих
                             </a>
                         </div>
 

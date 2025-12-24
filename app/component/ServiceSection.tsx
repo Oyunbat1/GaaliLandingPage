@@ -48,11 +48,11 @@ export default function ServiceSection() {
                     </div>
 
                     {/* Grid Layout for the two main data points */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
                         {serviceSupportData.map((service) => (
                             <div
                                 key={service.id}
-                                className="bg-white p-8 rounded-xl shadow-md border border-gray-200 hover:shadow-lg transition duration-300 flex flex-col h-full"
+                                className="bg-white h-auto p-8 rounded-xl shadow-md  hover:shadow-lg transition duration-300 flex flex-col "
                             >
                                 <h3 className="text-2xl font-bold text-gray-900 mb-6 pb-4 border-b border-gray-100">
                                     {service.title}
