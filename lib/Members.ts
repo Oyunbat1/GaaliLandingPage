@@ -43,10 +43,7 @@ export const zonesData: Zone[] = [
         socials: [
           { id: 1, name: "Phone", url: "tel:+976-91913797" },
           { id: 2, name: "Email", url: "mailto:togtokhnomt10@gmail.com" },
-          // VIBER FIX: Use %2B instead of +
-          { id: 3, name: "Viber", url: "viber://chat?number=%2B97695118788" },
-          // WECHAT FIX: Just the ID
-          { id: 4, name: "WeChat", url: "sarantuya_wechatid" },
+          { id: 3, name: "Viber", url: "viber://chat?number=%2B97680661615" },
         ],
       },
     ],
@@ -66,7 +63,6 @@ export const zonesData: Zone[] = [
           { id: 1, name: "Phone", url: "tel:+976-88011346" },
           { id: 2, name: "Email", url: "mailto:togtokhnomt05@gmail.com" },
           { id: 3, name: "Viber", url: "viber://chat?number=%2B97699112233" },
-          { id: 4, name: "WeChat", url: "gerelmaa_wechat" },
         ],
       },
     ],
@@ -86,7 +82,6 @@ export const zonesData: Zone[] = [
           { id: 1, name: "Phone", url: "tel:+976-88815330" },
           { id: 2, name: "Email", url: "mailto:togtokhnomt04@gmail.com" },
           { id: 3, name: "Viber", url: "viber://chat?number=%2B97699112233" },
-          { id: 4, name: "WeChat", url: "ganchimeg_wechat" },
         ],
       },
     ],
@@ -110,7 +105,6 @@ export const zonesData: Zone[] = [
               { id: 1, name: "Phone", url: "tel:+976-99134771" },
               { id: 2, name: "Email", url: "mailto:togtokhnomt9901@gmail.com" },
               { id: 3, name: "Viber", url: "viber://chat?number=%2B97699112233" },
-              { id: 4, name: "WeChat", url: "dulmaa_wechat" },
             ],
           },
           {
@@ -124,7 +118,6 @@ export const zonesData: Zone[] = [
               { id: 1, name: "Phone", url: "tel:+976-99172613" },
               { id: 2, name: "Email", url: "mailto:togtokhnomt03@gmail.com" },
               { id: 3, name: "Viber", url: "viber://chat?number=%2B97699112233" },
-              { id: 4, name: "WeChat", url: "zolzaya_wechat" },
             ],
           },
           {
@@ -138,7 +131,6 @@ export const zonesData: Zone[] = [
               { id: 1, name: "Phone", url: "tel:+976-86849742" },
               { id: 2, name: "Email", url: "mailto:togtokhnomt9906@gmail.com " },
               { id: 3, name: "Viber", url: "viber://chat?number=%2B97699112233" },
-              { id: 4, name: "WeChat", url: "nyamdorj_wechat" },
             ],
           },
         ],
@@ -158,7 +150,6 @@ export const zonesData: Zone[] = [
               { id: 1, name: "Phone", url: "tel:+976-89858081" },
               { id: 2, name: "Email", url: "mailto:togtokhnomt07@gmail.com" },
               { id: 3, name: "Viber", url: "viber://chat?number=%2B97699112233" },
-              { id: 4, name: "WeChat", url: "delgermaa_wechat" },
             ],
           },
         ],
@@ -178,7 +169,6 @@ export const zonesData: Zone[] = [
               { id: 1, name: "Phone", url: "tel:+976-88556529" },
               { id: 2, name: "Email", url: "mailto:togtokhnomt09@gmail.com" },
               { id: 3, name: "Viber", url: "viber://chat?number=%2B97699112233" },
-              { id: 4, name: "WeChat", url: "narantuya_wechat" },
             ],
           },
         ],

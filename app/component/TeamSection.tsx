@@ -130,8 +130,7 @@ export default function TeamSection() {
                     </div>
 
                     {/* RIGHT SIDE: Members Grid */}
-                    {/* RIGHT SIDE: Members Grid */}
-                    <div className="lg:w-2/3 flex-grow">
+                    <div className="lg:w-2/3 flex grow">
                         <div className="bg-black/20 backdrop-blur-xl rounded-[2rem] p-6 md:p-10 border border-white/10 min-h-full shadow-2xl">
                             <AnimatePresence mode="wait">
                                 <motion.div
@@ -140,7 +139,7 @@ export default function TeamSection() {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -10 }}
                                     transition={{ duration: 0.3 }}
-                                    className="h-full flex flex-col" // Added flex flex-col to handle height
+                                    className="h-full"
                                 >
                                     <div className="mb-8 flex items-end justify-between border-b border-white/10 pb-4">
                                         <div>
@@ -160,18 +159,7 @@ export default function TeamSection() {
                                     </div>
 
                                     {activeMembers.length > 0 ? (
-                                        /* UPDATED CONTAINER:
-                                           1. max-h-[60vh]: Limits height on mobile to 60% of viewport
-                                           2. md:max-h-none: Removes limit on desktop
-                                           3. overflow-y-auto: Enables internal scrolling on mobile
-                                           4. Custom Scrollbar styling for a cleaner look
-                                        */
-                                        <div className="
-              grid grid-cols-1 sm:grid-cols-2 gap-6
-              max-h-[60vh] overflow-y-auto md:max-h-none md:overflow-visible
-              pr-2 pb-4
-              scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent
-          ">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                             {activeMembers.map((member) => (
                                                 <MemberCard key={member.id} member={member} />
                                             ))}
@@ -202,7 +190,7 @@ function MemberCard({ member }: { member: Member }) {
             animate="visible"
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="group relative flex flex-col h-full w-[310px] bg-white backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-[#2A00FF]/20 transition-all duration-300"
+            className="group relative flex flex-col h-full w-[300px] bg-white backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-[#2A00FF]/20 transition-all duration-300"
         >
             {/* Top Decoration Line */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#2A00FF] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
